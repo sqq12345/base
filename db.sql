@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4541
+# Version 1
 #
-# http://www.sequelpro.com/
+# https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 192.168.33.71 (MySQL 5.6.41-log)
+# Host: 127.0.0.1 (MySQL 8.0.13)
 # Database: base
-# Generation Time: 2018-09-28 05:05:51 +0000
+# Generation Time: 2019-01-10 02:37:53 +0000
 # ************************************************************
 
 
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -42,7 +43,7 @@ CREATE TABLE `y_admin_files` (
   `update_time` int(11) unsigned NOT NULL,
   `delete_time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户文件表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户文件表';
 
 
 
@@ -57,7 +58,7 @@ CREATE TABLE `y_admin_group_access` (
   UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
   KEY `uid` (`uid`),
   KEY `group_id` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色用户关联表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色用户关联表';
 
 LOCK TABLES `y_admin_group_access` WRITE;
 /*!40000 ALTER TABLE `y_admin_group_access` DISABLE KEYS */;
@@ -83,7 +84,7 @@ CREATE TABLE `y_admin_groups` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '默认为1启用，2冻结',
   `rules` varchar(350) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
 
 LOCK TABLES `y_admin_groups` WRITE;
 /*!40000 ALTER TABLE `y_admin_groups` DISABLE KEYS */;
@@ -111,7 +112,7 @@ CREATE TABLE `y_admin_log_datas` (
   `delete_time` int(10) unsigned DEFAULT NULL,
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户操作日志数据表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户操作日志数据表';
 
 LOCK TABLES `y_admin_log_datas` WRITE;
 /*!40000 ALTER TABLE `y_admin_log_datas` DISABLE KEYS */;
@@ -122,7 +123,8 @@ VALUES
 	(2,2,'0c8aad80hWESDtzpUZEjjbd1YzuLNI+dd0pLut8K841F+1UNuTIgVYG3By57qECrOGqs5AYzV7uVCE7W1iU',1538110842,1538110842,NULL,1),
 	(3,3,'d75a1deftEzTkWc1zxbK6N/75HOaM1XwcJpE9Tw9tfmP1CrQURA',1538110884,1538110884,NULL,1),
 	(4,4,'f78623fbKWorvvV6sa4J42QzM08db25JyHZGgdS6XUAEPz467IUvqqV5oBJJa9Cce6/W2XyxH85SReNyybByvpFcaX6K3cXxNtjd57dHCm/USjibxFDkQyvW/gXjesWb/N9jiXHp6O00JSt2324nkUVrHCDmqSizxKdd3Lxm/+tTqSzjQADYCSIysv2ADqVaU+gbCC/sc57rKMtfLPMc16AwdwWsu4vqvP5KJqpp9ovi4m3kaCk8jtaKRib056Q4a3lc8+SlrmUOvDN/VyGa+LK1cx8YtplKgnBQV7Q2SbXt0XElQN38c+evLQT4cKQGNlZ73OGEGwvp3MGOZm1gavQJRn3CwEH2P6Wu59EtFLRI/fqbABq/3aqJR695r4InQD3+ZNg',1538110950,1538110950,NULL,1),
-	(5,5,'7cca1ff7BMnAugt5z7u04R6DzcRwnRBVuGgwOgmqgam5ZqH7Wck',1538111051,1538111051,NULL,1);
+	(5,5,'7cca1ff7BMnAugt5z7u04R6DzcRwnRBVuGgwOgmqgam5ZqH7Wck',1538111051,1538111051,NULL,1),
+	(6,6,'c7085650ZXnmADUIUPU1ACu+8Vk2woZOSH944hchqKH3jhwLvKvzKD5M/MxT6yvracmQy7VM6rfsifiZx5MeaDtg601bzCxQNkaKDoL84+FC6mJ9OHtVXFvqqofcQjpUQ+JaFmgT0JrYniPwl+graD+s8TbxFD6ymI+cSkqumH67hhJ0lw88NBOhu55+Wc6haDj5fI2G89mnHAjZrxYUko8QY4QKvTVdXpDtZy+yJFbJbGB/3cMWKF6So+am3XeVuKB/mwHIFUlBvDqyOk/JcwuUhvOGzlP4jfT94XhMB9q2aCQ4OMnVwxNUnSC8DwNscm0XnkYJvLfvZGNyuh9Odw+UPvjkkSBhecd2o2rXzxCrTX3LyA8jTScFCsy99cX4yqpxIqtT7G0qmVflv6SWnLF4gD+6U9JyzLXwNjnpdSFeugwb7oT2b2PNBdt0lPx4V2FxCKmaQ9go',1547087817,1547087817,NULL,1);
 
 /*!40000 ALTER TABLE `y_admin_log_datas` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -145,7 +147,7 @@ CREATE TABLE `y_admin_logs` (
   `delete_time` int(10) unsigned DEFAULT NULL,
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '默认状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户操作日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户操作日志表';
 
 LOCK TABLES `y_admin_logs` WRITE;
 /*!40000 ALTER TABLE `y_admin_logs` DISABLE KEYS */;
@@ -156,7 +158,8 @@ VALUES
 	(2,1,-1,'二维码生成',2,'admin/extend/qrcode.html',3232243969,1538110842,NULL,1),
 	(3,1,-1,'Excel导入导出',2,'admin/extend/excel.html',3232243969,1538110884,NULL,1),
 	(4,1,1,'修改设置',2,'admin/sysconfig/edit.html',3232243969,1538110950,NULL,1),
-	(5,1,-1,'Excel导入导出',2,'admin/extend/excel.html',3232243969,1538111051,NULL,1);
+	(5,1,-1,'Excel导入导出',2,'admin/extend/excel.html',3232243969,1538111051,NULL,1),
+	(6,1,0,'登录',2,'admin/auth/login.html',2886926337,1547087817,NULL,1);
 
 /*!40000 ALTER TABLE `y_admin_logs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -182,7 +185,7 @@ CREATE TABLE `y_admin_mail_logs` (
   `delete_time` int(10) unsigned DEFAULT NULL,
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '默认状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='邮件发送记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='邮件发送记录表';
 
 
 
@@ -204,7 +207,7 @@ CREATE TABLE `y_admin_menus` (
   `type` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '认证方式，1为实时认证，2为登录认证',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：1默认正常，2禁用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台菜单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台菜单表';
 
 LOCK TABLES `y_admin_menus` WRITE;
 /*!40000 ALTER TABLE `y_admin_menus` DISABLE KEYS */;
@@ -275,7 +278,7 @@ CREATE TABLE `y_admin_users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `name` varchar(50) NOT NULL COMMENT '用户名（登录帐号）',
   `password` char(32) NOT NULL COMMENT '密码',
-  `nick_name` varchar(30) DEFAULT NULL COMMENT '用户昵称或中文用户名',
+  `nickname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户昵称或中文用户名',
   `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
   `mobile` char(11) DEFAULT NULL COMMENT '手机号',
   `avatar` varchar(255) DEFAULT 'avatar.png' COMMENT '用户头像',
@@ -285,12 +288,12 @@ CREATE TABLE `y_admin_users` (
   `delete_time` int(10) unsigned DEFAULT NULL COMMENT '删除时间',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '用户状态1正常，0冻结',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户表';
 
 LOCK TABLES `y_admin_users` WRITE;
 /*!40000 ALTER TABLE `y_admin_users` DISABLE KEYS */;
 
-INSERT INTO `y_admin_users` (`id`, `name`, `password`, `nick_name`, `email`, `mobile`, `avatar`, `qq_openid`, `create_time`, `update_time`, `delete_time`, `status`)
+INSERT INTO `y_admin_users` (`id`, `name`, `password`, `nickname`, `email`, `mobile`, `avatar`, `qq_openid`, `create_time`, `update_time`, `delete_time`, `status`)
 VALUES
 	(1,'admin','21232f297a57a5a743894a0e4a801fc3','超级管理员','','18855550000','1\\20171212\\dc6f12bb9a981882e3d559a5af1addd0.png',NULL,1488189586,1513148717,NULL,1),
 	(2,'admin2','21232f297a57a5a743894a0e4a801fc3','管理员2','','','1\\20171212\\dc6f12bb9a981882e3d559a5af1addd0.png',NULL,1488189586,1513185374,NULL,1);
@@ -311,7 +314,7 @@ CREATE TABLE `y_excel_examples` (
   `sex` varchar(8) NOT NULL,
   `city` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Excel示例表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Excel示例表';
 
 LOCK TABLES `y_excel_examples` WRITE;
 /*!40000 ALTER TABLE `y_excel_examples` DISABLE KEYS */;
@@ -337,7 +340,7 @@ CREATE TABLE `y_request_type` (
   `title` varchar(20) NOT NULL COMMENT '请求代码',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '默认状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='请求类型表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='请求类型表';
 
 LOCK TABLES `y_request_type` WRITE;
 /*!40000 ALTER TABLE `y_request_type` DISABLE KEYS */;
@@ -363,7 +366,7 @@ CREATE TABLE `y_sysconfig_groups` (
   `name` varchar(100) NOT NULL COMMENT '分组名称',
   `sort_id` int(11) unsigned NOT NULL DEFAULT '1000' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统设置分组';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统设置分组';
 
 LOCK TABLES `y_sysconfig_groups` WRITE;
 /*!40000 ALTER TABLE `y_sysconfig_groups` DISABLE KEYS */;
@@ -394,7 +397,7 @@ CREATE TABLE `y_sysconfigs` (
   `update_time` int(11) unsigned NOT NULL DEFAULT '0',
   `delete_time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统参数表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统参数表';
 
 LOCK TABLES `y_sysconfigs` WRITE;
 /*!40000 ALTER TABLE `y_sysconfigs` DISABLE KEYS */;
@@ -418,7 +421,7 @@ CREATE TABLE `y_syslog_trace` (
   `log_id` int(11) unsigned NOT NULL COMMENT 'log id',
   `trace` text,
   PRIMARY KEY (`trace_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统日志trace表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统日志trace表';
 
 LOCK TABLES `y_syslog_trace` WRITE;
 /*!40000 ALTER TABLE `y_syslog_trace` DISABLE KEYS */;
@@ -431,7 +434,8 @@ VALUES
 	(4,4,'#0 /vagrant/wwwroot/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /vagrant/wwwroot/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /vagrant/wwwroot/base/thinkphp/start.php(19): think\\App::run()\n#3 /vagrant/wwwroot/base/public/index.php(17): require(\'/vagrant/wwwroo...\')\n#4 {main}'),
 	(5,5,'#0 [internal function]: think\\Error::appError(2, \'strpos() expect...\', \'/vagrant/wwwroo...\', 41, Array)\n#1 /vagrant/wwwroot/base/thinkphp/library/traits/controller/Jump.php(41): strpos(Array, \'://\')\n#2 /vagrant/wwwroot/base/application/admin/controller/Base.php(175): think\\Controller->success(\'success\', Array, Array, 3, Array)\n#3 /vagrant/wwwroot/base/application/admin/controller/Extend.php(164): app\\admin\\controller\\Base->success(\'success\', Array, Array)\n#4 [internal function]: app\\admin\\controller\\Extend->qrcode()\n#5 /vagrant/wwwroot/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Extend), Array)\n#6 /vagrant/wwwroot/base/thinkphp/library/think/App.php(606): think\\App::invokeMethod(Array, Array)\n#7 /vagrant/wwwroot/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#8 /vagrant/wwwroot/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#9 /vagrant/wwwroot/base/thinkphp/start.php(19): think\\App::run()\n#10 /vagrant/wwwroot/base/public/index.php(17): require(\'/vagrant/wwwroo...\')\n#11 {main}'),
 	(6,6,'#0 /vagrant/wwwroot/base/thinkphp/library/think/db/Query.php(262): think\\db\\Connection->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#1 /vagrant/wwwroot/base/thinkphp/library/think/db/Query.php(2228): think\\db\\Query->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#2 /vagrant/wwwroot/base/thinkphp/library/think/Model.php(1168): think\\db\\Query->insert(Array, false, false, NULL)\n#3 /vagrant/wwwroot/base/thinkphp/library/think/Model.php(1649): think\\Model->save(Array, Array)\n#4 /vagrant/wwwroot/base/thinkphp/library/think/Model.php(1368): think\\Model::create(Array, Array)\n#5 /vagrant/wwwroot/base/application/admin/controller/Extend.php(291): think\\Model->saveAll(Array)\n#6 [internal function]: app\\admin\\controller\\Extend->excel()\n#7 /vagrant/wwwroot/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Extend), Array)\n#8 /vagrant/wwwroot/base/thinkphp/library/think/App.php(606): think\\App::invokeMethod(Array, Array)\n#9 /vagrant/wwwroot/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#10 /vagrant/wwwroot/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#11 /vagrant/wwwroot/base/thinkphp/start.php(19): think\\App::run()\n#12 /vagrant/wwwroot/base/public/index.php(17): require(\'/vagrant/wwwroo...\')\n#13 {main}'),
-	(7,7,'#0 /vagrant/wwwroot/base/extend/tools/AliOss.php(22): OSS\\OssClient->__construct(\'\', \'\', \'\')\n#1 /vagrant/wwwroot/base/application/admin/controller/Extend.php(225): tools\\AliOss::upload(Array)\n#2 [internal function]: app\\admin\\controller\\Extend->aliyunoss()\n#3 /vagrant/wwwroot/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Extend), Array)\n#4 /vagrant/wwwroot/base/thinkphp/library/think/App.php(606): think\\App::invokeMethod(Array, Array)\n#5 /vagrant/wwwroot/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#6 /vagrant/wwwroot/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#7 /vagrant/wwwroot/base/thinkphp/start.php(19): think\\App::run()\n#8 /vagrant/wwwroot/base/public/index.php(17): require(\'/vagrant/wwwroo...\')\n#9 {main}');
+	(7,7,'#0 /vagrant/wwwroot/base/extend/tools/AliOss.php(22): OSS\\OssClient->__construct(\'\', \'\', \'\')\n#1 /vagrant/wwwroot/base/application/admin/controller/Extend.php(225): tools\\AliOss::upload(Array)\n#2 [internal function]: app\\admin\\controller\\Extend->aliyunoss()\n#3 /vagrant/wwwroot/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Extend), Array)\n#4 /vagrant/wwwroot/base/thinkphp/library/think/App.php(606): think\\App::invokeMethod(Array, Array)\n#5 /vagrant/wwwroot/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#6 /vagrant/wwwroot/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#7 /vagrant/wwwroot/base/thinkphp/start.php(19): think\\App::run()\n#8 /vagrant/wwwroot/base/public/index.php(17): require(\'/vagrant/wwwroo...\')\n#9 {main}'),
+	(8,8,'#0 /var/www/html/base/thinkphp/library/think/Model.php(2278): think\\Model->getAttr(\'nickname\')\n#1 /var/www/html/base/runtime/temp/68de68ef072315b9c65f707a00015b68.php(64): think\\Model->offsetGet(\'nickname\')\n#2 /var/www/html/base/thinkphp/library/think/template/driver/File.php(53): include(\'/var/www/html/b...\')\n#3 /var/www/html/base/thinkphp/library/think/Template.php(188): think\\template\\driver\\File->read(\'/var/www/html/b...\', Array)\n#4 /var/www/html/base/thinkphp/library/think/view/driver/Think.php(86): think\\Template->fetch(\'/var/www/html/b...\', Array, Array)\n#5 /var/www/html/base/thinkphp/library/think/View.php(163): think\\view\\driver\\Think->fetch(\'/var/www/html/b...\', Array, Array)\n#6 /var/www/html/base/thinkphp/library/think/Controller.php(120): think\\View->fetch(\'\', Array, Array, Array)\n#7 /var/www/html/base/application/admin/controller/Base.php(338): think\\Controller->fetch(\'\', Array, Array, Array)\n#8 /var/www/html/base/application/admin/controller/Index.php(32): app\\admin\\controller\\Base->fetch()\n#9 [internal function]: app\\admin\\controller\\Index->index()\n#10 /var/www/html/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Index), Array)\n#11 /var/www/html/base/thinkphp/library/think/App.php(606): think\\App::invokeMethod(Array, Array)\n#12 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#13 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#14 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#15 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#16 {main}');
 
 /*!40000 ALTER TABLE `y_syslog_trace` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -450,7 +454,7 @@ CREATE TABLE `y_syslogs` (
   `line` int(10) unsigned NOT NULL COMMENT '所在行数',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统错误日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统错误日志表';
 
 LOCK TABLES `y_syslogs` WRITE;
 /*!40000 ALTER TABLE `y_syslogs` DISABLE KEYS */;
@@ -463,7 +467,8 @@ VALUES
 	(4,0,'module not exists:jump.pjp','/vagrant/wwwroot/base/thinkphp/library/think/App.php',535,1538106475),
 	(5,0,'strpos() expects parameter 1 to be string, array given','/vagrant/wwwroot/base/thinkphp/library/traits/controller/Jump.php',41,1538110843),
 	(6,0,'SQLSTATE[23000]: Integrity constraint violation: 1048 Column \'sex\' cannot be null','/vagrant/wwwroot/base/thinkphp/library/think/db/Connection.php',463,1538110885),
-	(7,0,'access key id is empty','/vagrant/wwwroot/base/vendor/aliyuncs/oss-sdk-php/src/OSS/OssClient.php',90,1538110906);
+	(7,0,'access key id is empty','/vagrant/wwwroot/base/vendor/aliyuncs/oss-sdk-php/src/OSS/OssClient.php',90,1538110906),
+	(8,0,'property not exists:app\\admin\\model\\AdminUsers->nickname','/var/www/html/base/thinkphp/library/think/Model.php',624,1547087817);
 
 /*!40000 ALTER TABLE `y_syslogs` ENABLE KEYS */;
 UNLOCK TABLES;
