@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 8.0.13)
 # Database: base
-# Generation Time: 2019-01-10 08:13:53 +0000
+# Generation Time: 2019-01-10 08:38:31 +0000
 # ************************************************************
 
 
@@ -87,6 +87,18 @@ CREATE TABLE `y_admin_log_datas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户操作日志数据表';
 
+LOCK TABLES `y_admin_log_datas` WRITE;
+/*!40000 ALTER TABLE `y_admin_log_datas` DISABLE KEYS */;
+
+INSERT INTO `y_admin_log_datas` (`id`, `log_id`, `data`, `status`, `create_time`, `update_time`, `delete_time`)
+VALUES
+	(1,1,'e77b120azqfpNtbYDKiqxuESfe9P3rnqEeg+0ZIRHnm+R/Ua8GujXjG2EgmKTi8p1EZldmSvRoU841ngmZ5zcFniyrhlLIPJcl3500ystuaURGOOZUQZnqZjCqzU7zkWRg8Z+KdEyo8fyfFrhzIJq1rYR6qpSKkBgmi46VaeLE7Dja63ESwpiA4C/jMIqyLgRuujVT35VY6kpaR4P8A1eNrvoYa7UN5ldRYTGWC3ZvZKwdvCMafUHMuUeF3sQUdoWP1M8tmYKt7F+cT9+Sakwo1fwHhG2KGgcw3s8zREwdLvq/cP1FAmjRFyKvu13LAebnztx5lfrA06YYlDpw5Uq960ahIfWH4BKK0B1ag6ry60jBisgHKtadXS7WZoHRVB+W09QTT8zyAYRwYu71O9kUcMo67Mb8xG8aro2COlpOV22eA6xUc6Zcm1GHhyYcCFtouoeRxYuPWL',1,1547108503,1547108503,NULL),
+	(2,2,'46e663f8N67gqgaKg+scv1Y1RJ3WesR2NY9CUrk8w5lKaWuDzKmPpHzA/z5AjpEStKV5BzKxHs9lqWp5hQ3NFFa8/2mvFZFeKX2KLrfUisn3fcpU2+umb3HasdGXv833/CxvSJqj9g3sUomazUJoymdHqAD53+e/3yh6Ia7+J1Pi8fwZCET8i9aH7HZ7uccMF20hTJyX7w8q3KCMPJhLX/bY+5An4fUMINzLyYaaesIs1tQXFNatzOvFJ9uJUB20gjzedVPs8kbhSxcc8i83MuAyYJemPl/NdxtbNL14QB5zd+0yLcad83yIgFdkmBoR0m0trIKC7ODf8gTP0V5+5Hb8g6xfU1JwP2AnlEuDjFKGnknEzBPWEc6/xUltybGOcdTpJfb0jDhE',1,1547109433,1547109433,NULL),
+	(3,3,'cee8383fW/p1KhEEy06KyHFDSAHHW6EwCC40FIhdzd9dDr8N0gwGXHuwwn4PXN0lBxE4N6Vds6xmCrOawZOwsblvpr4p1ZmHkCQQ7QK7AVJ19cw1hFVugPQGaDpaviKUqfmNnjRHK8y0qeydNL68TR2pM9dOSHzk8PNCRCf3mrttHf8AEaZDM6q6x9UpTO506sL7nI3C08Z3jV/lQsc8kMxLgjYfEFIjCgOeXq7mc5ZvGXaftbN0Ly1KYorxciHki5QqA8IKpzfJBmPMAGkbzEz41n1Ua/f/hBeqPD7uu870XKk3KPoXyyP/vCwtNyUvYlXF+9qsSSYVY7VhFOhIuai6zIqUme9CE9qUxxulU3CgfirhOrknlfu8Xh2/NNdlcXo2yv8dRw',1,1547109441,1547109441,NULL),
+	(4,4,'e995556a2rpF1S2dPVTmzUYUUZdPzqtYwmZZbmek2lq4sx4/LOw7b1Ycp0f195tpEi2u5RidziSeUS3YpfYEPnRMt52v/LDqoZEL4M9ZFV+Rai2W17I6gWLAyCX2sf4OJi4VrY2w9V90BPFtqcFNZlmSnQG1BEPltPr0fnH8Lc3csXeBIJtDFd5QIJW+c9TsioSAKlIcxZqL1zjQVn8HephrNxfVyMoL/YK31J/ENzSIrYYJHnph+Ry1mWEAIa6Ei6e0uFDMmSYnTm23ZO/3OqRyPmrCYeAZtuPp5Qh8DyQwH/wbfIMHIO4Rxq8GtZzMytBnhQY39o43d1+gcnjbz6TH/cw+edZLNBmGixtN3sxRe08RVpqCKj7QLpk1z8e7nvgxlQUkjw',1,1547109449,1547109449,NULL);
+
+/*!40000 ALTER TABLE `y_admin_log_datas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table y_admin_logs
@@ -107,6 +119,18 @@ CREATE TABLE `y_admin_logs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户操作日志表';
 
+LOCK TABLES `y_admin_logs` WRITE;
+/*!40000 ALTER TABLE `y_admin_logs` DISABLE KEYS */;
+
+INSERT INTO `y_admin_logs` (`id`, `user_id`, `resource_id`, `title`, `log_type`, `log_url`, `log_ip`, `status`, `create_time`)
+VALUES
+	(1,1,0,'登录',2,'admin/auth/login.html',2886926337,1,1547108503),
+	(2,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109433),
+	(3,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109441),
+	(4,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109449);
+
+/*!40000 ALTER TABLE `y_admin_logs` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table y_admin_menus
@@ -283,9 +307,9 @@ LOCK TABLES `y_excel_examples` WRITE;
 
 INSERT INTO `y_excel_examples` (`id`, `name`, `age`, `sex`, `city`)
 VALUES
-	(1,'于破熊',25,'男','济南'),
-	(2,'淘气熊',23,'女','济南'),
-	(3,'熊宝宝',1,'男','济南');
+	(1,'a',25,'男','济南'),
+	(2,'b',23,'女','济南'),
+	(3,'c',1,'男','济南');
 
 /*!40000 ALTER TABLE `y_excel_examples` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -315,7 +339,7 @@ LOCK TABLES `y_sysconfigs` WRITE;
 
 INSERT INTO `y_sysconfigs` (`id`, `group_id`, `name`, `code`, `content`, `description`, `status`, `create_time`, `update_time`, `delete_time`)
 VALUES
-	(1,1,'后台名称','backend_name','Test','网站后台名称，title和登录界面显示',1,1502187289,0,NULL);
+	(1,1,'后台名称','backend_name','YAdmin','网站后台名称，title和登录界面显示',1,1502187289,0,NULL);
 
 /*!40000 ALTER TABLE `y_sysconfigs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -333,19 +357,6 @@ CREATE TABLE `y_syslog_trace` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统日志trace表';
 
-LOCK TABLES `y_syslog_trace` WRITE;
-/*!40000 ALTER TABLE `y_syslog_trace` DISABLE KEYS */;
-
-INSERT INTO `y_syslog_trace` (`id`, `log_id`, `trace`)
-VALUES
-	(1,1,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
-	(2,2,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
-	(3,3,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
-	(4,4,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
-	(5,5,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}');
-
-/*!40000 ALTER TABLE `y_syslog_trace` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table y_syslogs
@@ -363,19 +374,6 @@ CREATE TABLE `y_syslogs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统错误日志表';
 
-LOCK TABLES `y_syslogs` WRITE;
-/*!40000 ALTER TABLE `y_syslogs` DISABLE KEYS */;
-
-INSERT INTO `y_syslogs` (`id`, `level`, `message`, `file`, `line`, `create_time`)
-VALUES
-	(1,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1547107874),
-	(2,0,'module not exists:favicon-32x32.png','/var/www/html/base/thinkphp/library/think/App.php',535,1547107882),
-	(3,0,'module not exists:favicon-16x16.png','/var/www/html/base/thinkphp/library/think/App.php',535,1547107882),
-	(4,0,'module not exists:favicon-96x96.png','/var/www/html/base/thinkphp/library/think/App.php',535,1547107883),
-	(5,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1547107944);
-
-/*!40000 ALTER TABLE `y_syslogs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table y_user_levels

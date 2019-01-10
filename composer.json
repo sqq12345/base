@@ -30,7 +30,8 @@
         "firebase/php-jwt": "^5.0",
         "liushoukun/dawn-api": "^2.0",
         "yansongda/pay": "^2.6",
-        "overtrue/pinyin": "~4.0"
+        "overtrue/pinyin": "~4.0",
+        "overtrue/wechat": "~4.0"
     },
     "extra": {
         "think-path": "thinkphp"
