@@ -21,7 +21,7 @@ class CreateKey extends Command
     {
         $key_file = fopen(dirname(__FILE__)."/../../../.app_key", "w");
         if($key_file){
-            $key = md5(uniqid('bear'));
+            $key = md5(uniqid('yadmin'));
             fwrite($key_file, $key);
             fclose($key_file);
             $output->writeln("Create key successful!");

@@ -1,15 +1,12 @@
 <?php
-/**
- *
- * @author yupoxiong<i@yufuping.com>
- */
+
 
 
 namespace tools;
 
 use think\Paginator;
 
-class Bearpage extends Paginator
+class Ypage extends Paginator
 {
 
     /**
