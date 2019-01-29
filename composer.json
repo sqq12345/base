@@ -31,7 +31,9 @@
         "liushoukun/dawn-api": "^2.0",
         "yansongda/pay": "^2.6",
         "overtrue/pinyin": "~4.0",
-        "overtrue/wechat": "~4.0"
+        "overtrue/wechat": "~4.0",
+        "mtdowling/cron-expression": "^1.2",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "extra": {
         "think-path": "thinkphp"
