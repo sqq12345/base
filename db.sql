@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 8.0.13)
 # Database: base
-# Generation Time: 2019-01-10 08:38:31 +0000
+# Generation Time: 2019-01-29 02:59:43 +0000
 # ************************************************************
 
 
@@ -95,7 +95,10 @@ VALUES
 	(1,1,'e77b120azqfpNtbYDKiqxuESfe9P3rnqEeg+0ZIRHnm+R/Ua8GujXjG2EgmKTi8p1EZldmSvRoU841ngmZ5zcFniyrhlLIPJcl3500ystuaURGOOZUQZnqZjCqzU7zkWRg8Z+KdEyo8fyfFrhzIJq1rYR6qpSKkBgmi46VaeLE7Dja63ESwpiA4C/jMIqyLgRuujVT35VY6kpaR4P8A1eNrvoYa7UN5ldRYTGWC3ZvZKwdvCMafUHMuUeF3sQUdoWP1M8tmYKt7F+cT9+Sakwo1fwHhG2KGgcw3s8zREwdLvq/cP1FAmjRFyKvu13LAebnztx5lfrA06YYlDpw5Uq960ahIfWH4BKK0B1ag6ry60jBisgHKtadXS7WZoHRVB+W09QTT8zyAYRwYu71O9kUcMo67Mb8xG8aro2COlpOV22eA6xUc6Zcm1GHhyYcCFtouoeRxYuPWL',1,1547108503,1547108503,NULL),
 	(2,2,'46e663f8N67gqgaKg+scv1Y1RJ3WesR2NY9CUrk8w5lKaWuDzKmPpHzA/z5AjpEStKV5BzKxHs9lqWp5hQ3NFFa8/2mvFZFeKX2KLrfUisn3fcpU2+umb3HasdGXv833/CxvSJqj9g3sUomazUJoymdHqAD53+e/3yh6Ia7+J1Pi8fwZCET8i9aH7HZ7uccMF20hTJyX7w8q3KCMPJhLX/bY+5An4fUMINzLyYaaesIs1tQXFNatzOvFJ9uJUB20gjzedVPs8kbhSxcc8i83MuAyYJemPl/NdxtbNL14QB5zd+0yLcad83yIgFdkmBoR0m0trIKC7ODf8gTP0V5+5Hb8g6xfU1JwP2AnlEuDjFKGnknEzBPWEc6/xUltybGOcdTpJfb0jDhE',1,1547109433,1547109433,NULL),
 	(3,3,'cee8383fW/p1KhEEy06KyHFDSAHHW6EwCC40FIhdzd9dDr8N0gwGXHuwwn4PXN0lBxE4N6Vds6xmCrOawZOwsblvpr4p1ZmHkCQQ7QK7AVJ19cw1hFVugPQGaDpaviKUqfmNnjRHK8y0qeydNL68TR2pM9dOSHzk8PNCRCf3mrttHf8AEaZDM6q6x9UpTO506sL7nI3C08Z3jV/lQsc8kMxLgjYfEFIjCgOeXq7mc5ZvGXaftbN0Ly1KYorxciHki5QqA8IKpzfJBmPMAGkbzEz41n1Ua/f/hBeqPD7uu870XKk3KPoXyyP/vCwtNyUvYlXF+9qsSSYVY7VhFOhIuai6zIqUme9CE9qUxxulU3CgfirhOrknlfu8Xh2/NNdlcXo2yv8dRw',1,1547109441,1547109441,NULL),
-	(4,4,'e995556a2rpF1S2dPVTmzUYUUZdPzqtYwmZZbmek2lq4sx4/LOw7b1Ycp0f195tpEi2u5RidziSeUS3YpfYEPnRMt52v/LDqoZEL4M9ZFV+Rai2W17I6gWLAyCX2sf4OJi4VrY2w9V90BPFtqcFNZlmSnQG1BEPltPr0fnH8Lc3csXeBIJtDFd5QIJW+c9TsioSAKlIcxZqL1zjQVn8HephrNxfVyMoL/YK31J/ENzSIrYYJHnph+Ry1mWEAIa6Ei6e0uFDMmSYnTm23ZO/3OqRyPmrCYeAZtuPp5Qh8DyQwH/wbfIMHIO4Rxq8GtZzMytBnhQY39o43d1+gcnjbz6TH/cw+edZLNBmGixtN3sxRe08RVpqCKj7QLpk1z8e7nvgxlQUkjw',1,1547109449,1547109449,NULL);
+	(4,4,'e995556a2rpF1S2dPVTmzUYUUZdPzqtYwmZZbmek2lq4sx4/LOw7b1Ycp0f195tpEi2u5RidziSeUS3YpfYEPnRMt52v/LDqoZEL4M9ZFV+Rai2W17I6gWLAyCX2sf4OJi4VrY2w9V90BPFtqcFNZlmSnQG1BEPltPr0fnH8Lc3csXeBIJtDFd5QIJW+c9TsioSAKlIcxZqL1zjQVn8HephrNxfVyMoL/YK31J/ENzSIrYYJHnph+Ry1mWEAIa6Ei6e0uFDMmSYnTm23ZO/3OqRyPmrCYeAZtuPp5Qh8DyQwH/wbfIMHIO4Rxq8GtZzMytBnhQY39o43d1+gcnjbz6TH/cw+edZLNBmGixtN3sxRe08RVpqCKj7QLpk1z8e7nvgxlQUkjw',1,1547109449,1547109449,NULL),
+	(5,5,'8c7e4c44W05ORzrFZqFbaPOTRtfMI+PS8W1HyjtoRvGvouE8XiC+4mt9THM+6/j/LQmQnQnrkq/V0EYsf+fSppkCtzpuunYOfeIVh550NGDAt+hQKJyqteCfT6fMIsJ0zHREY21HoW+K8QmNH6YZrwjFwP/0xxbgOMD+MaUHRIJC8g5Yr1T8f2/G3Jxg3UbD7lr9jFE3ZWt/9GT2lsOLBSMK5TNCYHb6TtBiY8c4e0rxL1CWj0xZaadVQKmXsqqQ+MZuUX3dES8kr/2LRPp4gKxm4o+DIlXcQvFiNaCXmFb3SgHw1kKned3LfgSKV0q0+MIw6mkXojzdIBWkkBOMTzBz8ZLmL3c4sEp6sw1NI8yOYzMu5oT2tDcTN2IoCMEyQR6pvmO6STT7K/ye10NrJOTwneBXPYuMpMN3ksGmjnjIXn6ATOC68rn3hEYZA3vB89lqtmbjx0JD',1,1548647539,1548647539,NULL),
+	(6,6,'a9090085IhXylJ+M1bC6G7dreZKhNHe1S5+kVu94gEI98e0H/oHD7wuHCMYQ9n56qYnlxK5aWbK0clIxuKtUlvWMaXL+JEC7muo7vdjoGhBfV+CcHfYHJVfpCp3FdMJhCCGs5Gqw3g1gTUG5ejHwov4PF6wmu3/GI0suu1AeeOd5Fou12/w0GSzk25PQJzQ+ed7dkzVwwqXCrEpuOWqr+W98FvIgK/j3gsvVhoFKIvorV86xYigaAuRSNTD78ZiimU5W4m/a3tdzhU7M9ZF9GdPy77ehMhICkH2tGYzsmM+oZhCr5Z/cRMCp3jTtqTZ33syl8o8peZRRprlU7MDmDXikpML/dSL3yxUV4kb97G7VKxtCja7qWRa0YrMahdc',1,1548647583,1548647583,NULL),
+	(7,7,'193ebbb8lwyIC6M9XvtxoU3h2e/buWnGXZON3tq1wFNDEEOZsVYyWu8SEKzO/pLjRw+O/WNai3o4AFCfRI66bpZQNd2kgd1Pq27Kou1NYWgE5yz00Cl4n+jTeaQb7jWvM1OhIRlTISU1+/ds0TyAliqy52ewdeZsqn3NeskCx1mKlECNO843WFnj8xlYZBo7XJNezE3lbaMJ2lC0/6c8/5bWIlsfTgjUh0NeA6fD8EWfNhRcMsPS06esIVrrFa7Mg0mIFEG4ABpTajuqHjfgY6nRJmHuh+5KWgsukZZ1mVe0E2kJA6CZZDJQVER/qE8p97+Z+NosSWTmVeLio9jfl2JzJlVCvtUb/V7IIgQqgEUfc97y8G7eKvSOTSMjvlOQGIGLwwFyVwPjzS6yPuM7Z2u5XnH9',1,1548647641,1548647641,NULL);
 
 /*!40000 ALTER TABLE `y_admin_log_datas` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -127,7 +130,10 @@ VALUES
 	(1,1,0,'登录',2,'admin/auth/login.html',2886926337,1,1547108503),
 	(2,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109433),
 	(3,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109441),
-	(4,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109449);
+	(4,1,1,'修改设置',2,'admin/sysconfig/edit.html',2886926337,1,1547109449),
+	(5,1,0,'登录',2,'admin/auth/login.html',2886926337,1,1548647539),
+	(6,1,-1,'添加菜单',2,'admin/admin_menu/add.html',2886926337,1,1548647583),
+	(7,1,44,'修改菜单',2,'admin/admin_menu/edit.html',2886926337,1,1548647641);
 
 /*!40000 ALTER TABLE `y_admin_logs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -201,7 +207,7 @@ VALUES
 	(41,40,'优化表','admin/database/optimize','fa-refresh','',0,1000,2,1,1),
 	(42,40,'修复表','admin/database/repair','fa-circle-o-notch','',0,1000,2,1,1),
 	(43,40,'查看表详情','admin/database/view','fa-info-circle','',0,1000,2,1,1),
-	(44,2,'个人资料','admin/admin_user/profile','fa-smile-o','',1,1000,2,1,1),
+	(44,2,'个人资料','admin/admin_user/profile','fa-smile-o','',1,2000,2,1,1),
 	(45,0,'用户管理','admin/user/manage','fa-user','',1,1000,0,1,1),
 	(46,45,'用户列表','admin/user/index','fa-list','',1,1000,0,1,1),
 	(47,46,'添加用户','admin/user/add','fa-plus','',0,1000,2,1,1),
@@ -212,7 +218,8 @@ VALUES
 	(52,51,'添加用户等级','admin/user_level/add','fa-plus','',0,1000,2,1,1),
 	(53,51,'修改用户等级','admin/user_level/edit','fa-pencil','',0,1000,2,1,1),
 	(54,51,'删除用户等级','admin/user_level/del','fa-trash','',0,1000,2,1,1),
-	(55,16,'后台设置','admin/sysconfig/index','fa-list','',1,1000,0,1,1);
+	(55,16,'后台设置','admin/sysconfig/index','fa-list','',1,1000,0,1,1),
+	(56,2,'定时任务','admin/crontab/index','fa-calendar','',1,1000,0,1,1);
 
 /*!40000 ALTER TABLE `y_admin_menus` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -288,6 +295,57 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table y_crontab
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `y_crontab`;
+
+CREATE TABLE `y_crontab` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `type` varchar(10) NOT NULL DEFAULT '' COMMENT '事件类型',
+  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '事件标题',
+  `content` text NOT NULL COMMENT '事件内容',
+  `schedule` varchar(100) NOT NULL DEFAULT '' COMMENT 'Crontab格式',
+  `sleep` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '延迟秒数执行',
+  `maximums` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最大执行次数 0为不限',
+  `executes` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '已经执行的次数',
+  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `begintime` int(10) NOT NULL DEFAULT '0' COMMENT '开始时间',
+  `endtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '结束时间',
+  `executetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后执行时间',
+  `weigh` int(10) NOT NULL DEFAULT '0' COMMENT '权重',
+  `status` enum('completed','expired','hidden','normal') NOT NULL DEFAULT 'normal' COMMENT '状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='定时任务表';
+
+LOCK TABLES `y_crontab` WRITE;
+/*!40000 ALTER TABLE `y_crontab` DISABLE KEYS */;
+
+INSERT INTO `y_crontab` (`id`, `type`, `title`, `content`, `schedule`, `sleep`, `maximums`, `executes`, `createtime`, `updatetime`, `begintime`, `endtime`, `executetime`, `weigh`, `status`)
+VALUES
+	(1,'url','测试','http://www.baidu.com','*/1 * * * *',0,0,4,1548655272,1548730225,0,0,1548730225,0,'normal');
+
+/*!40000 ALTER TABLE `y_crontab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table y_crontab_log
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `y_crontab_log`;
+
+CREATE TABLE `y_crontab_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `create_time` int(10) unsigned NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `crontab_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 # Dump of table y_excel_examples
 # ------------------------------------------------------------
 
@@ -357,6 +415,25 @@ CREATE TABLE `y_syslog_trace` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统日志trace表';
 
+LOCK TABLES `y_syslog_trace` WRITE;
+/*!40000 ALTER TABLE `y_syslog_trace` DISABLE KEYS */;
+
+INSERT INTO `y_syslog_trace` (`id`, `log_id`, `trace`)
+VALUES
+	(1,1,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(2,2,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(3,3,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(4,4,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(5,5,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(6,6,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(7,7,'#0 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, NULL)\n#1 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#2 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#3 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#4 {main}'),
+	(8,8,'#0 /var/www/html/base/thinkphp/library/think/db/Query.php(269): think\\db\\Connection->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#1 /var/www/html/base/thinkphp/library/think/db/Query.php(2275): think\\db\\Query->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#2 /var/www/html/base/thinkphp/library/think/Model.php(1182): think\\db\\Query->insert(Array, false, false, NULL)\n#3 /var/www/html/base/thinkphp/library/think/Model.php(1663): think\\Model->save(Array, Array)\n#4 /var/www/html/base/application/admin/controller/Crontab.php(39): think\\Model::create(Array)\n#5 [internal function]: app\\admin\\controller\\Crontab->add()\n#6 /var/www/html/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Crontab), Array)\n#7 /var/www/html/base/thinkphp/library/think/App.php(611): think\\App::invokeMethod(Array, Array)\n#8 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#9 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#10 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#11 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#12 {main}'),
+	(9,9,'#0 /var/www/html/base/thinkphp/library/think/db/Query.php(269): think\\db\\Connection->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#1 /var/www/html/base/thinkphp/library/think/db/Query.php(2275): think\\db\\Query->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#2 /var/www/html/base/thinkphp/library/think/Model.php(1182): think\\db\\Query->insert(Array, false, false, NULL)\n#3 /var/www/html/base/thinkphp/library/think/Model.php(1663): think\\Model->save(Array, Array)\n#4 /var/www/html/base/application/admin/controller/Crontab.php(39): think\\Model::create(Array)\n#5 [internal function]: app\\admin\\controller\\Crontab->add()\n#6 /var/www/html/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Crontab), Array)\n#7 /var/www/html/base/thinkphp/library/think/App.php(611): think\\App::invokeMethod(Array, Array)\n#8 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#9 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#10 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#11 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#12 {main}'),
+	(10,10,'#0 /var/www/html/base/thinkphp/library/think/db/Query.php(269): think\\db\\Connection->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#1 /var/www/html/base/thinkphp/library/think/db/Query.php(2275): think\\db\\Query->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#2 /var/www/html/base/thinkphp/library/think/Model.php(1182): think\\db\\Query->insert(Array, false, false, NULL)\n#3 /var/www/html/base/thinkphp/library/think/Model.php(1663): think\\Model->save(Array, Array)\n#4 /var/www/html/base/application/admin/controller/Crontab.php(39): think\\Model::create(Array)\n#5 [internal function]: app\\admin\\controller\\Crontab->add()\n#6 /var/www/html/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Crontab), Array)\n#7 /var/www/html/base/thinkphp/library/think/App.php(611): think\\App::invokeMethod(Array, Array)\n#8 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#9 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#10 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#11 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#12 {main}'),
+	(11,11,'#0 /var/www/html/base/thinkphp/library/think/db/Query.php(269): think\\db\\Connection->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#1 /var/www/html/base/thinkphp/library/think/db/Query.php(2275): think\\db\\Query->execute(\'INSERT INTO `y_...\', Array, Object(think\\db\\Query))\n#2 /var/www/html/base/thinkphp/library/think/Model.php(1182): think\\db\\Query->insert(Array, false, false, NULL)\n#3 /var/www/html/base/thinkphp/library/think/Model.php(1663): think\\Model->save(Array, Array)\n#4 /var/www/html/base/application/admin/controller/Crontab.php(39): think\\Model::create(Array)\n#5 [internal function]: app\\admin\\controller\\Crontab->add()\n#6 /var/www/html/base/thinkphp/library/think/App.php(343): ReflectionMethod->invokeArgs(Object(app\\admin\\controller\\Crontab), Array)\n#7 /var/www/html/base/thinkphp/library/think/App.php(611): think\\App::invokeMethod(Array, Array)\n#8 /var/www/html/base/thinkphp/library/think/App.php(456): think\\App::module(Array, Array, true)\n#9 /var/www/html/base/thinkphp/library/think/App.php(139): think\\App::exec(Array, Array)\n#10 /var/www/html/base/thinkphp/start.php(19): think\\App::run()\n#11 /var/www/html/base/public/index.php(17): require(\'/var/www/html/b...\')\n#12 {main}');
+
+/*!40000 ALTER TABLE `y_syslog_trace` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table y_syslogs
@@ -374,6 +451,25 @@ CREATE TABLE `y_syslogs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统错误日志表';
 
+LOCK TABLES `y_syslogs` WRITE;
+/*!40000 ALTER TABLE `y_syslogs` DISABLE KEYS */;
+
+INSERT INTO `y_syslogs` (`id`, `level`, `message`, `file`, `line`, `create_time`)
+VALUES
+	(1,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1547357452),
+	(2,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1547447215),
+	(3,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1548386263),
+	(4,0,'module not exists:favicon.ico','/var/www/html/base/thinkphp/library/think/App.php',535,1548647533),
+	(5,0,'module not exists:favicon-32x32.png','/var/www/html/base/thinkphp/library/think/App.php',535,1548647540),
+	(6,0,'module not exists:favicon-16x16.png','/var/www/html/base/thinkphp/library/think/App.php',535,1548647540),
+	(7,0,'module not exists:favicon-96x96.png','/var/www/html/base/thinkphp/library/think/App.php',535,1548647540),
+	(8,0,'SQLSTATE[HY000]: General error: 1364 Field \'id\' doesn\'t have a default value','/var/www/html/base/thinkphp/library/think/db/Connection.php',453,1548655001),
+	(9,0,'SQLSTATE[HY000]: General error: 1364 Field \'id\' doesn\'t have a default value','/var/www/html/base/thinkphp/library/think/db/Connection.php',453,1548655017),
+	(10,0,'SQLSTATE[HY000]: General error: 1364 Field \'id\' doesn\'t have a default value','/var/www/html/base/thinkphp/library/think/db/Connection.php',453,1548655039),
+	(11,0,'SQLSTATE[HY000]: General error: 1364 Field \'id\' doesn\'t have a default value','/var/www/html/base/thinkphp/library/think/db/Connection.php',453,1548655209);
+
+/*!40000 ALTER TABLE `y_syslogs` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table y_user_levels
