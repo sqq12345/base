@@ -33,9 +33,17 @@
 			<div class="box-header">
 			    <div>
 			        {if $showDataHeaderAddButton}
-			        <a title="新增" class="btn btn-primary btn-sm" href="{:url('add')}">
+			        <!-- <a title="新增" class="btn btn-primary btn-sm" href="{:url('add')}">
 			            新增
-			        </a>
+              </a> -->
+
+              <a data-url="{:url('add')}" 
+                 data-title="新增计划任务" class="btn btn-primary btn-sm AjaxButton" 
+                 data-type="2" data-confirm="2">
+                新增
+            </a>
+
+
 			        {/if}
 			        {if $showDataHeaderDeleteButton}
 			        <a class="btn btn-danger btn-sm AjaxButton" title="批量删除，谨慎使用" data-id="checked" data-url="{:url('del')}">删除</a>
@@ -82,10 +90,26 @@
                             {/if}
                         </td>                        
                         <td class="td-do">
-                           <a href="{:url('edit','id='.$list['id'])}" title="修改" class="btn btn-primary btn-xs">
+                      
+              <!--   
+                <a href="{:url('edit','id='.$list['id'])}" title="修改" class="btn btn-primary btn-xs">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a data-url="{:url('getlog')}" title="日志详情" class="btn btn-primary btn-xs AjaxButton" data-id="{$list.id}" data-type="2" data-confirm="2">
+              </a> -->
+
+              <a title="查看" 
+                 data-toggle="tooltip" 
+                 data-id="{$list.id}" 
+                 data-title="修改计划任务"
+                 data-url="edit" 
+                 data-confirm="2" 
+                 data-type="2" 
+                 class="AjaxButton btn btn-default btn-xs">
+                    <i class="fa fa-pencil"></i>
+              </a>
+
+
+                            <a data-url="{:url('getlog')}" data-title="日志详情" class="btn btn-primary btn-xs AjaxButton" data-id="{$list.id}" data-type="2" data-confirm="2">
                                 <i class="fa fa-list"></i>
                             </a>
                             <a class="btn btn-danger btn-xs AjaxButton" title="删除" data-id="{$list.id}" data-url="{:url('del')}">

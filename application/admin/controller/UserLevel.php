@@ -35,7 +35,7 @@ class UserLevel extends Base
             }
             $result = UserLevels::create($param);
             if ($result) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }
@@ -52,7 +52,7 @@ class UserLevel extends Base
                 return $this->error($resultValidate);
             }
             if (false !== $info->save($this->param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }

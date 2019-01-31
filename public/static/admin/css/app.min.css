@@ -83,4 +83,5 @@ html,body{height:100%}.layout-boxed html,.layout-boxed body{height:100%}body{fon
 /*表单 保存按钮*/
 .dataform-submit{
     margin-right: 20px;
+    padding-top:12px;
 }

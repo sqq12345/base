@@ -37,7 +37,7 @@ class Crontab extends Base
            if($ret===true){
                if($this->check_schedule($this->param['row']['schedule'])){
                    CrontabModel::create($this->param['row']);                   
-                   return $this->success();
+                   return $this->layerSuccess();
                }else{
                    return $this->error('周期格式不对');
                }
@@ -60,7 +60,7 @@ class Crontab extends Base
             if($valid->check( $this->param['row'])){
                 if($this->check_schedule($this->param['row']['schedule'])){
                     $crontab->data($this->param['row'])->save();
-                    return $this->success();
+                    return $this->layerSuccess();
                 }else{
                     return $this->error('周期格式不对');
                 }

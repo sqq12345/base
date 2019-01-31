@@ -2,8 +2,19 @@
 <div class="box-header">
     <div>
         {if $showDataHeaderAddButton}
-        <a title="新增" data-toggle="tooltip" class="btn btn-primary btn-sm" href="add.html">
+        <!-- 
+          <a title="新增" data-toggle="tooltip" class="btn btn-primary btn-sm" href="add.html">
             新增
+        </a> 
+        -->
+        <a title="新增" 
+        data-toggle="tooltip" 
+        data-title="新增"
+        data-url="add" 
+        data-confirm="2" 
+        data-type="2" 
+        class="AjaxButton btn btn-primary btn-sm">
+        新增
         </a>
         {/if}
         {if $showDataHeaderDeleteButton}

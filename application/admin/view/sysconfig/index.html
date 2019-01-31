@@ -35,10 +35,23 @@
                         <td>{$item.description}</td>
                         <td>{$item.status_text}</td>
                         <td>
-                            <a href="edit.html?id={$item.id}"
+                            <!-- <a href="edit.html?id={$item.id}"
                                class="btn btn-primary btn-xs" title="编辑" data-toggle="tooltip">
                                 <i class="fa fa-pencil"></i>
-                            </a>
+                            </a> -->
+
+                                   
+                            <a title="编辑" 
+                            data-toggle="tooltip" 
+                            data-id="{$item.id}" 
+                            data-title="修改"
+                            data-url="edit" 
+                            data-confirm="2" 
+                            data-type="2" 
+                            class="AjaxButton btn-primary btn btn-xs">
+                            <i class="fa fa-pencil"></i>
+                         </a>
+
                             <a class="btn btn-danger btn-xs AjaxButton" title="删除" data-toggle="tooltip" data-id="{$item.id}" data-url="del.html">
                                 <i class="fa fa-trash"></i>
                             </a>

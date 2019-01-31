@@ -65,7 +65,7 @@ class AdminUser extends Base
                 }
                 $user->adminGroup()->saveAll($group);
                 
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }
@@ -124,7 +124,8 @@ class AdminUser extends Base
                 }
                 $info->adminGroup()->saveAll($group);
 
-                return $this->success();
+                // return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }

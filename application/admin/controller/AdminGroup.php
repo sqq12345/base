@@ -39,7 +39,7 @@ class AdminGroup extends Base
             //默认写入首页和个人资料权限
             $param['rules'] = '1,2,44';
             if (AdminGroups::create($param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }
@@ -67,7 +67,7 @@ class AdminGroup extends Base
 
             $info = AdminGroups::get($this->id);
             if ($info->save($this->param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }
@@ -128,7 +128,7 @@ class AdminGroup extends Base
                 'rules' => implode(',', $this->param['menu_id'])
             ];
             if (false !== $info->save($data)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }

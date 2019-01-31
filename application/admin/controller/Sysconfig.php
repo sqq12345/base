@@ -34,7 +34,7 @@ class Sysconfig extends Base
             }
             $result = Sysconfigs::create($param);
             if ($result) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }
@@ -51,7 +51,7 @@ class Sysconfig extends Base
                 return $this->error($result_validate);
             }
             if (false !== $info->save($this->param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }

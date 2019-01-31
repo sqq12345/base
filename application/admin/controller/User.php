@@ -105,7 +105,8 @@ class User extends Base
 
             $result = Users::create($this->param);
             if ($result) {
-                return $this->success();
+              return $this->layerSuccess();
+                // return $this->success();
             }
             return $this->error();
         }
@@ -145,7 +146,7 @@ class User extends Base
             }
 
             if (false !== $info->save($this->param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error();
         }

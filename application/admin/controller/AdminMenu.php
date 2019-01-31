@@ -36,10 +36,17 @@ class AdminMenu extends Base
             $result[$n]['level']          = $tree->get_level($r['id'], $result);
             $result[$n]['parent_id_node'] = ($r['parent_id']) ? ' class="child-of-node-' . $r['parent_id'] . '"' : '';
 
-            $result[$n]['str_manage'] =
-                '<a href="' . url('admin_menu/edit', 'id=' . $r['id']) .
-                '" class="btn btn-primary btn-xs" title="修改" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
-                ';
+            // $result[$n]['str_manage'] =
+            //     '<a href="' . url('admin_menu/edit', 'id=' . $r['id']) .
+            //     '" class="btn btn-primary btn-xs"  data-confirm="2" 
+            //     data-type="2"  title="修改" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+            //     ';
+
+                $result[$n]['str_manage'] =
+                '<a data-id="' . $r['id'].
+                '" class="AjaxButton btn btn-primary btn-xs" data-url="edit"   data-confirm="2"  
+                data-type="2" data-title="修改" title="修改" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                ';    
 
             $result[$n]['str_manage'] .=
                 '<a class="btn btn-danger btn-xs AjaxButton" data-id="'. $r['id'].'" data-url="del.html" data-toggle="tooltip" title="删除"><i class="fa fa-trash"></i></a>';
@@ -89,7 +96,7 @@ class AdminMenu extends Base
 
             $menu = AdminMenus::create($this->param);
             if ($menu) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error('菜单添加失败');
         }
@@ -122,7 +129,7 @@ class AdminMenu extends Base
             $this->param['url'] = parse_name($this->param['url']);
 
             if (false !== $info->save($this->param)) {
-                return $this->success();
+                return $this->layerSuccess();
             }
             return $this->error('菜单修改失败');
         }

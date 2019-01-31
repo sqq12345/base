@@ -214,6 +214,11 @@ class Base extends Controller
         $this->redirect($url, $data, 302, ['success_message' => $msg]);
     }
 
+    protected function layerSuccess()
+    {
+      $this->success('操作成功', 'url://0');
+    }
+
 
     protected function error($msg = '操作失败', $url = null, $data = '', $wait = 3, array $header = [])
     {

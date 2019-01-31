@@ -65,10 +65,24 @@
                         <td>{$item.email}</td>
                         <td>{$item.status_text}</td>
                         <td class="td-do">
-                            <a href="edit.html?id={$item.id}"
+                            <!-- <a href="edit.html?id={$item.id}"
                                class="btn btn-primary btn-xs" title="修改" data-toggle="tooltip">
                                 <i class="fa fa-pencil"></i>
-                            </a>
+                            </a> -->
+                            
+                            <a title="修改" 
+                            data-toggle="tooltip" 
+                            data-id="{$item.id}" 
+                            data-title="修改"
+                            data-url="edit" 
+                            data-confirm="2" 
+                            data-type="2" 
+                            class="AjaxButton btn-primary btn btn-xs">
+                            <i class="fa fa-pencil"></i>
+                         </a>
+
+
+
                             <a class="btn btn-danger btn-xs AjaxButton" data-toggle="tooltip" title="删除" data-id="{$item.id}" data-url="del.html">
                                 <i class="fa fa-trash"></i>
                             </a>
