@@ -4,6 +4,8 @@ namespace app\admin\controller;
 
 //use app\common\controller\Backend;
 use app\common\model\WechatResponse;
+use app\common\validate\Validate;
+use app\common\validate\WeAutoreplyValid;
 
 /**
  * 微信自动回复管理
@@ -44,57 +46,60 @@ class WeAutoreply extends Base
          
     }
     
-    public function add(){
-        
-        if($this->request->isPost()){
-            
-            
-            return $this->error();
-        }
-        
+    public function add(){        
+        if($this->request->isPost()){            
+            $param=$this->request->post();
+            $validate=new WeAutoreplyValid();
+            if($validate->check($param)){
+                $this->model->save($param);
+                return $this->layerSuccess();
+            }else{
+                return $this->error($validate->getError());
+            }
+        }        
+        $reponses=WechatResponse::order('id desc')->column('eventkey,title');        
+        $this->assign('reponses',$reponses);
         return $this->fetch();
     }
     
     /**
      * 编辑
      */
-    public function edit($id = NULL)
+    public function edit($id)
     {
-        $row = $this->model->get(['id' => $ids]);
+        if(!is_numeric($id)){
+            $this->error('No Results were found');
+        }
+        $row = $this->model->get(['id' => $id]);
         if (!$row)
             $this->error('No Results were found');
         if ($this->request->isPost()) {
-            $params = $this->request->post("row/a");
-            if ($params) {
-                $row->save($params);
-                $this->success();
+            $param=$this->request->post();
+            $param['id']=$id;
+            $validate=new WeAutoreplyValid();
+            if($validate->check($param)){
+                $row->save($param);
+                return $this->layerSuccess();
+            }else{
+                return $this->error($validate->getError());
             }
-            $this->error();
         }
-        $response = WechatResponse::get(['eventkey' => $row['eventkey']]);
-        $this->view->assign("response", $response);
-        $this->view->assign("row", $row);
-        return $this->view->fetch();
+        $reponses=WechatResponse::order('id desc')->column('eventkey,title');
+        $this->assign('reponses',$reponses);
+        $this->assign("row", $row);
+        return $this->fetch();
     }
 
-    /**
-     * 判断文本是否唯一
-     * @internal
-     */
-    public function check_text_unique()
-    {
-        $row = $this->request->post("row/a");
-        $except = $this->request->post("except");
-        $text = isset($row['text']) ? $row['text'] : '';
-        if ($this->model->where('text', $text)->where(function ($query) use ($except) {
-                if ($except) {
-                    $query->where('text', '<>', $except);
-                }
-            })->count() == 0) {
-            $this->success();
-        } else {
-            $this->error(__('Text already exists'));
-        }
+    public function del($id){
+        if(!is_numeric($id))  $this->error('No Results were found');
+       
+        $row = $this->model->get(['id' => $id]);
+        if (!$row)   $this->error('No Results were found');
+        
+        $row->delete();
+        return $this->success();
+        
+        
     }
 
 }

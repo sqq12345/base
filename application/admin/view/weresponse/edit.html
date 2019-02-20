@@ -1,52 +1,166 @@
-<form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+<!--{__NOLAYOUT__}-->
+{include file="template/layout_iframe" /}
 
-    <div class="form-group">
-        <label for="module" class="control-label col-xs-12 col-sm-2">{:__('Resource title')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type="text" class="form-control" id="title" name="row[title]" value="{$row.title}" data-rule="required" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <form class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">标题:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input maxlength="20" id="title" name="title"   class="form-control" value="{$row.title}" >
+                                </div>
+					        </div>
+					    </div>
+					    
+					    <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">备注:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input maxlength="20" id="remark" name="remark"   class="form-control"  value="{$row.remark}"  >
+                                </div>
+					        </div>
+					    </div>
+					    
+					    <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">类型:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+					        	                                  
+                                    <input type="radio" name="type" value="text" id="type-text" {if $row['type']=='text'}checked{/if} />
+						            <label for="type-text">文本</label>
+						            
+						            <input type="radio" name="type" value="app" id="type-app" {if $row['type']=='app'}checked{/if} />
+						            <label for="type-app">应用</label>
+                                </div>
+					        </div>
+					    </div>
+					    <div class="form-group" id="changetype">
+					    
+					    </div>
+					    	
+					     <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">状态:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <input type="radio" name="status" value="1" {if $row['status']=='1'}checked{/if}>启用
+                                    <input type="radio" name="status" value="0" {if $row['status']=='0'}checked{/if}>禁止
+                                </div>
+					        </div>
+					    </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+				    {:token()}
+				    <div class="col-sm-6">
+				    </div>
+				    <div class="col-sm-6 col-md-4">				        
+				        <div class="btn-group">
+				            <input type="submit" class="btn flat btn-info dataform-submit" value="保存"> 
+				        </div>	
+				     </div>				         
+				    </div>
+				</div>
+            </form>
         </div>
     </div>
-    <div class="form-group">
-        <label for="controller" class="control-label col-xs-12 col-sm-2">{:__('Event key')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type='text' class="form-control" id="eventkey" name="row[eventkey]" value="{$row.eventkey}" data-rule="required" readonly />
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="remark" class="control-label col-xs-12 col-sm-2">{:__('Memo')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <textarea class="form-control" id="remark" name="row[remark]">{$row.remark}</textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            {:build_radios('row[type]', ['text' => __('Text'), 'app' => __('App')], $row['type'])}
-        </div>
-    </div>
-    <div id="expand">
-
-    </div>
-    <div class="form-group">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-12 col-sm-8">
-            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden')], $row['status'])}
-        </div>
-    </div>
-    <div class="form-group hidden layer-footer">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-12 col-sm-8">
-            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
-            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
-        </div>
-    </div>
-    <select name="applist" disabled="true" class="hidden">
-        {foreach $applist as $k => $v}
-            <option value="{$k}">{$v.name}</option>
-        {/foreach}
-    </select>
-</form>
+</div>
+<script src="/static/admin/js/app.min.js"></script>
 <script>
-    var apps = {:json_encode($applist)};
-    var datas = {$row.content};
+    var apps = {:json_encode($applist)};     
+    var datas = {$row.content}; 
+    
+    function init(){
+    	console.log(datas);
+    	changeType('{$row.type}');
+    	if(datas.app!==undefined){
+    		var ret=getdata(datas.app,datas.id);
+    		$('.app_select').remove();
+            $("#changetype").after(ret);
+    	}
+    	
+    }
+    
+    
+    function getdata(app,id){    	
+    	var configs=apps[app].config; 
+    	var str='';
+    	if(id===undefined){
+    		id='';
+    	}
+   		for(var i=0;i<configs.length;++i){
+   			str+='<div class="form-group app_select">';
+   		 	str+='<label for="c-title" class="control-label col-xs-12 col-sm-2">'+configs[i].caption+':</label>';
+   			str+='<div class="col-xs-12 col-sm-8">	';				           
+   			str+='<div class="input-group">';
+   			str+='<span class="input-group-addon"><i class="fa fa-book"></i></span>';
+   			str+='<input type="'+configs[i].type+'"  name="content_id"   class="form-control" value="'+id+'"">';
+   			str+='</div></div></div>';	    
+   		}
+    	return str;
+    }
+    
+    function changeType(type){
+    	var str='';
+    	if(type=='text'){
+    		var content='';
+    		if(datas.content !== undefined){
+    			content=datas.content;
+    		}    		 
+   		 	str+='<label for="c-title" class="control-label col-xs-12 col-sm-2">文本内容:</label>';
+   			str+='<div class="col-xs-12 col-sm-8">	';				           
+   			str+='<div class="input-group">';
+   			str+='<span class="input-group-addon"><i class="fa fa-book"></i></span>';
+   			str+='<textarea name="content"  class="form-control" rows="5">'+content+'</textarea>';
+   			str+='</div></div>';
+    	}else{
+    		var app='';
+    		if(datas.app!==undefined){
+    			 app=datas.app;
+    		}
+    		console.log(app);
+   		 	str+='<label for="c-title" class="control-label col-xs-12 col-sm-2">应用:</label>';
+   			str+='<div class="col-xs-12 col-sm-8">	';				           
+   			str+='<div class="input-group">';
+   			str+='<span class="input-group-addon"><i class="fa fa-book"></i></span>';
+   			str+='<select name="content"  class="form-control">';
+   			for(var i in apps){
+   				if(app==i){
+   					str+='<option value="'+i+'" selected>'+apps[i].name+'</option>';
+   				}else{
+   					str+='<option value="'+i+'" >'+apps[i].name+'</option>';
+   				}   				
+   			}   			
+   			str+='</select></div></div>';
+    	}
+    	
+    	$("#changetype").html(str);
+    	
+    }
+    
+    $("input[name='type']").change(function(){
+    	var type=$(this).val();
+    	console.log(type);
+    	changeType(type);
+    });
+    
+    $(document).on('change','select[name="content"]',function(){
+    	var type=$(this).val();
+        var ret=getdata(type);
+        console.log(ret);
+        $('.app_select').remove();
+        $("#changetype").after(ret);
+        
+    	
+    });
+  
+    init();
+    
+    $("input[name='type']:checked").trigger("click");
 </script>
+ 

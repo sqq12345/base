@@ -1,51 +1,73 @@
-<link href="{:$site['cdnurl'] ?>/assets/css/wechat/menu.css?v={$site.version}" rel="stylesheet">
-<style>
-    .clickbox {margin:0;text-align: left;}
-    .create-click {
-        margin-left:0;
-    }
-</style>
-<form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+<!--{__NOLAYOUT__}-->
+{include file="template/layout_iframe" /}
 
-    <div class="form-group">
-        <label for="c-title" class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type="text" name="row[title]" value="{$row.title}"  id="c-title" class="form-control" data-rule="required" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">标题:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input maxlength="20" id="title" name="title"   class="form-control" value="{$row.title}" >
+                                </div>
+					        </div>
+					    </div>
+					    
+					    <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">文本:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input maxlength="20" id="text" name="text"   class="form-control" value="{$row.text}">
+                                </div>
+					        </div>
+					    </div>
+					    
+					    <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">事件标识:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <select   name="eventkey"   class="form-control"  >
+                                    	{foreach name="reponses" item="v" key="k"}
+                                    		<option value="{$k}" {if($k==$row['eventkey'])}selected{/if}>{$v}</option>
+                                    	{/foreach}
+                                    </select>
+                                </div>
+					        </div>
+					    </div>
+					    
+					    <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">备注:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input maxlength="20" id="remark" name="remark"   class="form-control" value="{$row.remark}" >
+                                </div>
+					        </div>
+					    </div>
+					    
+					     <div class="form-group">
+					        <label for="c-title" class="control-label col-xs-12 col-sm-2">状态:</label>
+					        <div class="col-xs-12 col-sm-8">					           
+					        	<div class="input-group">
+                                    <input type="radio" name="status" value="1" {if($row['status']=='1')}checked{/if} >启用
+                                    
+                                    <input type="radio" name="status" value="0"  {if($row['status']=='0')}checked{/if}  >禁止
+                                </div>
+					        </div>
+					    </div>
+                    </div>
+                </div>
+                {include file="template/form_footer" /}
+            </form>
         </div>
     </div>
-    <div class="form-group">
-        <label for="c-text" class="control-label col-xs-12 col-sm-2">{:__('Text')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type="text" name="row[text]" value="{$row.text}"  id="c-text" class="form-control" data-rule="required; remote(wechat/autoreply/check_text_unique, except={$row.text})" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="c-eventkey" class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <div class="clickbox">
-                <input type="hidden" name="row[eventkey]" id="c-eventkey" class="form-control" value="{$row.eventkey}" data-rule="required" readonly />
-                <span class="create-click"><a href="wechat/response/select" id="select-resources"><i class="weixin-icon big-add-gray"></i><strong>选择现有资源</strong></a><div class="keytitle">资源名:{:$response['title']}</div></span>
-                <span class="create-click"><a href="wechat/response/add" id="add-resources"><i class="weixin-icon big-add-gray"></i><strong>添加新资源</strong></a></span>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="c-remark" class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input type="text" name="row[remark]" value="{$row.remark}"  id="c-remark" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('Hidden')], $row['status'])}
-        </div>
-    </div>
-    <div class="form-group hide layer-footer">
-        <label class="control-label col-xs-12 col-sm-2"></label>
-        <div class="col-xs-12 col-sm-8">
-            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
-            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
-        </div>
-    </div>
-</form>
+</div>
+
+
+

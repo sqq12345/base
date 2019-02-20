@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 //use app\common\controller\Backend;
 use wechat\Wechat;
+use think\Validate;
 
 /**
  * 资源管理
@@ -57,19 +58,35 @@ class WeResponse extends Base
     public function add()
     {
         if ($this->request->isPost()) {
+            $validate=new Validate([
+                'type'=>'require|token',
+                'content'=>'require'
+            ]);
+            
             $params = $this->request->param();
-            $params['eventkey'] = isset($params['eventkey']) && $params['eventkey'] ? $params['eventkey'] : uniqid();
-            $params['content'] = json_encode($params['content']);
-            $params['createtime'] = time();
+            $ret=$validate->check($params);
+            if(!$ret){
+                return $this->error($validate->getError());
+            }
+            $content=[];             
+            if($params['type']=='text'){
+                $content=['content'=>$this->request->param('content','')];
+            }else{
+                $content=['app'=>$this->request->param('content',''),'id'=>$this->request->param('content_id','')];
+            }          
+            $params['eventkey'] = isset($params['eventkey']) && $params['eventkey'] ? $params['eventkey'] : uniqid();            
+            
+            $params['content']=json_encode($content);
+            
             if ($params) {
                 $this->model->save($params);
-                $this->success();
-                $this->content = $params;
+                return $this->layerSuccess();
+                 
             }
             $this->error();
         }
         $appConfig = Wechat::appConfig();
-        //dump($appConfig);die;
+         
         $this->view->applist = $appConfig;
         $this->view->showFormFooter=true;
         $this->view->showFormFooterSubmitButton=true;
@@ -80,18 +97,32 @@ class WeResponse extends Base
     /**
      * 编辑
      */
-    public function edit($ids = NULL)
+    public function edit($id)
     {
-        $row = $this->model->get($ids);
+        $row = $this->model->get($id);
         if (!$row)
-            $this->error(__('No Results were found'));
+            $this->error('No Results were found');
         if ($this->request->isPost()) {
-            $params = $this->request->post("row/a");
-            $params['eventkey'] = isset($params['eventkey']) && $params['eventkey'] ? $params['eventkey'] : uniqid();
-            $params['content'] = json_encode($params['content']);
+            $validate=new Validate([
+                'type'=>'require|token',
+                'content'=>'require'
+            ]);
+            
+            $params = $this->request->param();
+            $ret=$validate->check($params);
+            if(!$ret){
+                return $this->error($validate->getError());
+            }
+            $content=[];
+            if($params['type']=='text'){
+                $content=['content'=>$this->request->param('content','')];
+            }else{
+                $content=['app'=>$this->request->param('content',''),'id'=>$this->request->param('content_id','')];
+            }             
+            $params['content']=json_encode($content);
             if ($params) {
                 $row->save($params);
-                $this->success();
+                $this->layerSuccess();
             }
             $this->error();
         }
@@ -101,4 +132,11 @@ class WeResponse extends Base
         return $this->view->fetch();
     }
 
+    public function del($id){
+        $row =$this->model->get($id);
+        if($row){
+            $row->delete();
+        }
+        return $this->success();
+    }
 }

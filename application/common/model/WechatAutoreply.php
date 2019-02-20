@@ -13,4 +13,11 @@ class WechatAutoreply extends Model
     protected $createTime = 'createtime';
     protected $updateTime = 'updatetime';
 
+    function getStatusTextAttr(){
+        if($this->getAttr('status')==1){
+            return '启用';
+        }else{
+            return '禁止';
+        }
+    }
 }
