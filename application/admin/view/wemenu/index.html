@@ -1,4 +1,4 @@
-<link href="__CDN__/assets/css/wechat/menu.css?v={$site['version']}" rel="stylesheet">
+<link href="/static/admin/css/wemenu.css" rel="stylesheet">
 <style>
     .form-item dl dt {
         width: 120px;
@@ -10,16 +10,14 @@
         font-size:12px;
     }
 </style>
-<div class="panel panel-default panel-intro">
-    {:build_heading()}
-
+<div class="panel panel-default panel-intro"> 
     <div class="panel-body">
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="one">
                 <div class="widget-body no-padding">
                     <div class="weixin-menu-setting clearfix">
                         <div class="mobile-menu-preview">
-                            <div class="mobile-head-title">{$site.name}</div>
+                            <div class="mobile-head-title">投缘帮</div>
                             <ul class="menu-list" id="menu-list">
                             </ul>
                         </div>
@@ -82,6 +80,7 @@
         <a href="javascript:;" class="menu-link" title="添加菜单"><i class="weixin-icon add-gray"></i></a>
     </li>
 </script>
+
 <script type="text/html" id="itemtpl">
     <dl>
         <dt id="current-item-option"><span class="is-sub-item <%=first?'hidden':''%>">子</span>菜单标题：</dt>
@@ -147,4 +146,7 @@
 <script type="text/javascript">
     var menu = {:json_encode($menu, JSON_UNESCAPED_UNICODE)};
     var responselist = {:json_encode($responselist, JSON_UNESCAPED_UNICODE)};
+    console.log(menu);
+    console.log(responselist);
 </script>
+ 

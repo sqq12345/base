@@ -27,15 +27,11 @@ class WeMenu extends Base
      * 查看
      */
     public function index()
-    {
-        $responselist = array();
-        $all = WechatResponse::all();
-        foreach ($all as $k => $v) {
-            $responselist[$v['eventkey']] = $v['title'];
-        }
-        $this->view->assign('responselist', $responselist);
+    {        
+        $all = WechatResponse::column('eventkey,title');       
+        $this->view->assign('responselist', $all);
         $this->view->assign('menu', (array)json_decode($this->wechatcfg->value, TRUE));
-        return $this->view->fetch();
+        return $this->fetch();
     }
 
     /**
