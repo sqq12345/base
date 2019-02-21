@@ -6,10 +6,15 @@
     .form-item dl dd {
         margin-left: 120px;
     }
+
     .form-item dl dd  input {
         font-size:12px;
     }
 </style>
+<script type="text/javascript">
+    var require = {config:{$config}};
+    console.log(require);
+    </script>
 <div class="panel panel-default panel-intro"> 
     <div class="panel-body">
         <div id="myTabContent" class="tab-content">
@@ -147,6 +152,10 @@
     var menu = {:json_encode($menu, JSON_UNESCAPED_UNICODE)};
     var responselist = {:json_encode($responselist, JSON_UNESCAPED_UNICODE)};
     console.log(menu);
-    console.log(responselist);
+    console.log(responselist);     
 </script>
- 
+<script src="/static/admin/js/require.min.js?v=1.01" data-main="/static/admin/js/require-backend.min.js?v=20181119"></script>
+
+
+
+

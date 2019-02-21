@@ -28,8 +28,10 @@ class WeMenu extends Base
      */
     public function index()
     {        
-        $all = WechatResponse::column('eventkey,title');       
+        $all = WechatResponse::column('eventkey,title');
+        $config='{"site":{"name":"FastAdmin","cdnurl":"","version":"1.0.1","timezone":"Asia\/Shanghai","languages":{"backend":"zh-cn","frontend":"zh-cn"}},"upload":{"cdnurl":"","uploadurl":"ajax\/upload","bucket":"local","maxsize":"10mb","mimetype":"jpg,png,bmp,jpeg,gif,zip,rar,xls,xlsx","multipart":[],"multiple":false},"modulename":"admin","controllername":"index","actionname":"index","jsname":"wechat_menu","moduleurl":"\/admin","language":"zh-cn","fastadmin":{"usercenter":true,"login_captcha":true,"login_failure_retry":true,"login_unique":false,"login_background":"\/assets\/img\/loginbg.jpg","multiplenav":false,"checkupdate":false,"version":"1.0.0.20181210_beta","api_url":"https:\/\/api.fastadmin.net"},"referer":null,"__PUBLIC__":"\/","__ROOT__":"\/","__CDN__":""}';
         $this->view->assign('responselist', $all);
+        $this->assign('config',$config);
         $this->view->assign('menu', (array)json_decode($this->wechatcfg->value, TRUE));
         return $this->fetch();
     }
