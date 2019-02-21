@@ -6,6 +6,8 @@ namespace app\admin\controller;
 use app\common\model\WechatResponse;
 use EasyWeChat\Foundation\Application;
 use think\Exception;
+use EasyWeChatComposer\EasyWeChat;
+use EasyWeChat\Factory;
 
 /**
  * 菜单管理
@@ -29,7 +31,7 @@ class WeMenu extends Base
     public function index()
     {        
         $all = WechatResponse::column('eventkey,title');
-        $config='{"site":{"name":"FastAdmin","cdnurl":"","version":"1.0.1","timezone":"Asia\/Shanghai","languages":{"backend":"zh-cn","frontend":"zh-cn"}},"upload":{"cdnurl":"","uploadurl":"ajax\/upload","bucket":"local","maxsize":"10mb","mimetype":"jpg,png,bmp,jpeg,gif,zip,rar,xls,xlsx","multipart":[],"multiple":false},"modulename":"admin","controllername":"index","actionname":"index","jsname":"wechat_menu","moduleurl":"\/admin","language":"zh-cn","fastadmin":{"usercenter":true,"login_captcha":true,"login_failure_retry":true,"login_unique":false,"login_background":"\/assets\/img\/loginbg.jpg","multiplenav":false,"checkupdate":false,"version":"1.0.0.20181210_beta","api_url":"https:\/\/api.fastadmin.net"},"referer":null,"__PUBLIC__":"\/","__ROOT__":"\/","__CDN__":""}';
+        $config='{"site":{"name":"FastAdmin","cdnurl":"","version":"1.1.1","timezone":"Asia\/Shanghai","languages":{"backend":"zh-cn","frontend":"zh-cn"}},"upload":{"cdnurl":"","uploadurl":"ajax\/upload","bucket":"local","maxsize":"10mb","mimetype":"jpg,png,bmp,jpeg,gif,zip,rar,xls,xlsx","multipart":[],"multiple":false},"modulename":"admin","controllername":"index","actionname":"index","jsname":"wechat_menu","moduleurl":"\/admin","language":"zh-cn","fastadmin":{"usercenter":true,"login_captcha":true,"login_failure_retry":true,"login_unique":false,"login_background":"\/assets\/img\/loginbg.jpg","multiplenav":false,"checkupdate":false,"version":"1.0.0.20181210_beta","api_url":"https:\/\/api.fastadmin.net"},"referer":null,"__PUBLIC__":"\/","__ROOT__":"\/","__CDN__":""}';
         $this->view->assign('responselist', $all);
         $this->assign('config',$config);
         $this->view->assign('menu', (array)json_decode($this->wechatcfg->value, TRUE));
@@ -42,8 +44,11 @@ class WeMenu extends Base
     public function edit($ids = NULL)
     {
         $menu = $this->request->post("menu");
-        $menu = (array)json_decode($menu, TRUE);
+        $menu=html_entity_decode($menu); 
+        $menu=(array)json_decode($menu, TRUE);
+        //dump($menu);die;
         foreach ($menu as $index => &$item) {
+            //dump($item);die;
             if (isset($item['sub_button'])) {
                 foreach ($item['sub_button'] as &$subitem) {
                     if ($subitem['type'] == 'view') {
@@ -54,7 +59,7 @@ class WeMenu extends Base
                         $subitem = ['type' => $subitem['type'], 'name' => $subitem['name'], 'url' => $subitem['url'], 'appid' => $subitem['appid'], 'pagepath' => $subitem['pagepath']];
                     } else {
                         $allowFields = ['type', 'name', 'key'];
-                        $subitem = ['type' => $item['type'], 'name' => $subitem['name'], 'key' => $subitem['key']];
+                        $subitem = ['type' => $subitem['type'], 'name' => $subitem['name'], 'key' => $subitem['key']];
                     }
                     $subitem = array_intersect_key($subitem, array_flip($allowFields));
                 }
@@ -79,7 +84,8 @@ class WeMenu extends Base
      */
     public function sync($ids = NULL)
     {
-        $app = new Application(get_addon_config('wechat'));
+        
+        $app = new Factory(get_addon_config('wechat'));
         try {
             $hasError = false;
             $menu = json_decode($this->wechatcfg->value, TRUE);
@@ -108,7 +114,7 @@ class WeMenu extends Base
                     $this->error($ret->errmsg);
                 }
             } else {
-                $this->error(__('Invalid parameters'));
+                $this->error('Invalid parameters');
             }
         } catch (Exception $e) {
             $this->error($e->getMessage());

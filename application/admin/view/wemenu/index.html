@@ -151,10 +151,12 @@
 <script type="text/javascript">
     var menu = {:json_encode($menu, JSON_UNESCAPED_UNICODE)};
     var responselist = {:json_encode($responselist, JSON_UNESCAPED_UNICODE)};
+    var syncUrl="{:url('admin/wemenu/sync')}";
+    var editUrl="{:url('admin/wemenu/edit')}";
     console.log(menu);
     console.log(responselist);     
 </script>
-<script src="/static/admin/js/require.min.js?v=1.01" data-main="/static/admin/js/require-backend.min.js?v=20181119"></script>
+<script src="/static/admin/js/require.min.js?v=1.0.2" data-main="/static/admin/js/require-backend.min.js?v=20190221"></script>
 
 
 

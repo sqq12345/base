@@ -1,6 +1,7 @@
 define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function ($, undefined, Backend, Table, Form, Sortable) {
     var Controller = {
         index: function () {
+        	 
             var typeList = [
                 {name: "click", title: "发送消息"},
                 {name: "view", title: "跳转网页"},
@@ -81,7 +82,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function
             };
             //更新菜单数据
             var menuUpdate = function () {
-                $.post("wechat/menu/edit", {menu: JSON.stringify(getMenuList())}, function (data) {
+                $.post(editUrl, {menu: JSON.stringify(getMenuList())}, function (data) {
                     if (data['code'] == 1) {
                     } else {
                         Toastr.error(__('Operation failed'));
@@ -165,7 +166,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function
             });
             //点击同步
             $(document).on('click', "#menuSyn", function () {
-                $.post("wechat/menu/sync", {}, function (ret) {
+                $.post(syncUrl, {}, function (ret) {
                     var msg = ret.hasOwnProperty("msg") && ret.msg != "" ? ret.msg : "";
                     if (ret.code == 1) {
                         Backend.api.toastr.success('菜单同步更新成功，生效时间看微信官网说明，或者你重新关注微信号！');
