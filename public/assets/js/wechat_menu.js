@@ -157,11 +157,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function
                 $(".weixin-content").show();
                 $(".no-weixin-content").hide();
                 $("#item-body").html(Template("itemtpl", data));
-
+                console.log(data);
+                $('select#key').val(data.key);
                 return false;
             });
             //触发保存
             $("form#form-item").on('change', "input,textarea", function () {
+                updateChangeMenu();
+            });
+            $(document).on('change',"select#key", function () {
                 updateChangeMenu();
             });
             //点击同步

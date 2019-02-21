@@ -49,7 +49,16 @@ class WeResponse extends Base
      */
     public function select()
     {
-        return $this->view->fetch();
+        $list = $this->model
+        ->order('id desc')->where('status',1)
+        ->paginate($this->webData['list_rows']);
+        
+        $this->assign([
+            'list' => $list,
+            'page'  => $list->render(),
+            'total' => $list->total()
+        ]);
+        return $this->fetch();
     }
 
     /**

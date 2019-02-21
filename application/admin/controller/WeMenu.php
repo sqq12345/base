@@ -35,6 +35,8 @@ class WeMenu extends Base
         $this->view->assign('responselist', $all);
         $this->assign('config',$config);
         $this->view->assign('menu', (array)json_decode($this->wechatcfg->value, TRUE));
+        $reponses=WechatResponse::where('status',1)->column('eventkey,title');
+        $this->assign('reponses',$reponses);
         return $this->fetch();
     }
 
