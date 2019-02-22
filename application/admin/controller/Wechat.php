@@ -44,7 +44,7 @@ class Wechat extends Controller
      */
     public function api()
     {
-        $this->app->server->setMessageHandler(function ($message) {
+        $this->app->server->push(function ($message) {
 
             $WechatService = new WechatService;
             $WechatContext = new WechatContext;
