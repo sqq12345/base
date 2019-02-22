@@ -14,6 +14,7 @@ use think\Log;
 use think\Config;
 use EasyWeChat\Factory;
 use wechat\Wechat as WechatService;
+use EasyWeChat\Kernel\Messages\Message;
 /**
  * 微信接口
  */
@@ -39,26 +40,37 @@ class Wechat extends Controller
         $this->error("当前插件暂无前台页面");
     }
 
+    public function api(){
+      //文本消息处理
+      $this->app->server->push(\wechat\TextMessageHandler::class,Message::TEXT);
+      
+      //事件消息处理
+      $this->app->server->push(\wechat\EventMessageHandler::class,Message::EVENT);
+      $response = $this->app->server->serve();       
+      return $response->send();
+        
+    }
+    
     /**
      * 微信API对接接口
      */
-    public function api()
+    public function _api()
     {
         $this->app->server->push(function ($message) {
 
             $WechatService = new WechatService;
             $WechatContext = new WechatContext;
             $WechatResponse = new WechatResponse;
-
-            $openid = $message->FromUserName;
-            $to_openid = $message->ToUserName;
-            $event = $message->Event;
-            $eventkey = $message->EventKey ? $message->EventKey : $message->Event;
+            //dump($message);die; FromUserName
+            $openid = $message['FromUserName'];
+            $to_openid = $message['ToUserName'];
+            $event = empty($message['Event'])?'':$message['Event'];
+            $eventkey = empty($message['EventKey']) ? $event :$message['EventKey'];
 
             $unknownmessage = WechatConfig::value('default.unknown.message');
-            $unknownmessage = $unknownmessage ? $unknownmessage : "对找到对应指令!";
+            $unknownmessage = $unknownmessage ? $unknownmessage : "未找到对应指令!";
 
-            switch ($message->MsgType) {
+            switch ($message['MsgType']) {
                 case 'event': //事件消息
                     switch ($event) {
                         case 'subscribe'://添加关注
@@ -103,7 +115,7 @@ class Wechat extends Controller
                     //上下文事件处理
                     $context = $WechatContext->where(['openid' => ['=', $openid], 'refreshtime' => ['>=', time() - 1800]])->find();
                     if ($context && $context['eventkey']) {
-                        $response = $WechatResponse->where(['eventkey' => $context['eventkey'], 'status' => 'normal'])->find();
+                        $response = $WechatResponse->where(['eventkey' => $context['eventkey'], 'status' => '1'])->find();
                         if ($response) {
                             $WechatContext->data(array('refreshtime' => time()))->where('id', $context['id'])->update();
                             $content = (array)json_decode($response['content'], TRUE);
@@ -114,11 +126,11 @@ class Wechat extends Controller
                         }
                     }
                     //自动回复处理
-                    if ($message->MsgType == 'text') {
+                    if ($message['MsgType'] == 'text') {
                         $wechat_autoreply = new WechatAutoreply();
-                        $autoreply = $wechat_autoreply->where(['text' => $message->Content, 'status' => 'normal'])->find();
+                        $autoreply = $wechat_autoreply->where(['text' => $message['Content'], 'status' => '1'])->find();
                         if ($autoreply) {
-                            $response = $WechatResponse->where(["eventkey" => $autoreply['eventkey'], 'status' => 'normal'])->find();
+                            $response = $WechatResponse->where(["eventkey" => $autoreply['eventkey'], 'status' => '1'])->find();
                             if ($response) {
                                 $content = (array)json_decode($response['content'], TRUE);
                                 $context = $WechatContext->where(['openid' => $openid])->find();

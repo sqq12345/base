@@ -379,8 +379,8 @@ return [
         /**
          * 账号基本信息，请从微信公众平台/开放平台获取
          */
-        'app_id'  => 'wx66664235f6edde24', // AppID
-        'secret'  =>'30e561a958a23c7a4bdf157f0ab31681', // AppSecret
+        'app_id'  => 'wx9d9850f20d2332dd', // AppID
+        'secret'  =>'2d11013681c82f8950a78ad85290ad78', // AppSecret
         'token'   => 'ycpai_test', // Token
         'aes_key' => '', // EncodingAESKey，安全模式下请一定要填写！！！
         /**

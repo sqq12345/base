@@ -20,4 +20,8 @@ class WechatAutoreply extends Model
             return '禁止';
         }
     }
+    
+    function response(){
+        return $this->hasOne('WechatResponse','eventkey','eventkey')->field('content,type');
+    }
 }

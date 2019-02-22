@@ -8,6 +8,8 @@ use EasyWeChat\Foundation\Application;
 use think\Exception;
 use EasyWeChatComposer\EasyWeChat;
 use EasyWeChat\Factory;
+use think\Config;
+use EasyWeChat\Kernel\Exceptions\HttpException;
 
 /**
  * 菜单管理
@@ -86,12 +88,15 @@ class WeMenu extends Base
      */
     public function sync($ids = NULL)
     {
+        $config=Config::get('wechat');
         
-        $app = new Factory(get_addon_config('wechat'));
+        $app = Factory::officialAccount($config);
+        $menu = json_decode($this->wechatcfg->value, TRUE);
         try {
-            $hasError = false;
-            $menu = json_decode($this->wechatcfg->value, TRUE);
-            foreach ($menu as $k => $v) {
+            $app->menu->create($menu);
+            
+            return $this->success();
+            /* foreach ($menu as $k => $v) {
                 if (isset($v['sub_button'])) {
                     foreach ($v['sub_button'] as $m => $n) {
                         if ($n['type'] == 'click' && isset($n['key']) && !$n['key']) {
@@ -117,8 +122,8 @@ class WeMenu extends Base
                 }
             } else {
                 $this->error('Invalid parameters');
-            }
-        } catch (Exception $e) {
+            } */
+        } catch (HttpException $e) {
             $this->error($e->getMessage());
         }
     }
