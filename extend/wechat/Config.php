@@ -1,6 +1,6 @@
 <?php
 
-namespace addons\wechat\library;
+namespace wechat;
 
 /**
  * Wechat配置类
@@ -15,7 +15,7 @@ class Config
 
     public static function load()
     {
-        $config = get_addon_config('wechat');
+        $config = Config('wechat');
 
         return [
             /**
