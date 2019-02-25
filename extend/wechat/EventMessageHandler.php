@@ -33,6 +33,7 @@ class EventMessageHandler extends MessageHandler
                 break;
             case 'view':
                 break;
+             
                 
             
         }

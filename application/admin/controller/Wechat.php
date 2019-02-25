@@ -40,6 +40,10 @@ class Wechat extends Controller
         $this->error("当前插件暂无前台页面");
     }
 
+    /**
+     * 微信API对接接口
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function api(){
       //文本消息处理
       $this->app->server->push(\wechat\TextMessageHandler::class,Message::TEXT);
