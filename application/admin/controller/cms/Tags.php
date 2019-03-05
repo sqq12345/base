@@ -17,12 +17,17 @@ class Tags extends Base
      */
     public function index()
     {
-        $list=TagsModel::paginate(10);
+        $model=new TagsModel();
+        $keyword=$this->request->param('keywords');
+        if($keyword){
+            $model->whereLike('title',"%{$keyword}%");
+        }
+        $list=$model->order('id desc')->paginate(10);
         foreach ($list as $item){
             $item->num=$item->list()->count();
         }
-        //dump($list);die;
-        $this->assign(['lists'=>$list,'page'=>$list->render()]);
+        
+        $this->assign(['lists'=>$list,'page'=>$list->render(),'keywords'=>$keyword]);
         
         
         return $this->fetch();
@@ -36,7 +41,7 @@ class Tags extends Base
             $valid=new TagValid();
             if($valid->check($data)){
                 $ret=TagsModel::create($data);
-                return $this->success();
+                return $this->layerSuccess();
             }
             
             return $this->error($valid->getError());

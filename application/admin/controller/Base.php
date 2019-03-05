@@ -52,7 +52,8 @@ class Base extends Controller
     protected $showFormFooter = true;
     protected $showFormFooterSubmitButton = true;
     protected $showFormFooterResetButton = true;
-
+    protected $uploadDir=ROOT_PATH . 'public' . DS . 'uploads/';
+    
     public function __construct()
     {
 
