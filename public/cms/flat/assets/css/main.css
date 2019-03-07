@@ -1046,6 +1046,9 @@ footer {
     height: 120px;
     padding-top: 10px; }
 
+.baidu-map{
+	height: 500px;  width: 100%;  display: block;  background-color: #eee;overflow: hidden;
+}
 .google-map {
   height: 500px;
   width: 100%;

@@ -9,6 +9,9 @@ use app\common\model\cms\Category;
 use app\common\model\cms\Banners;
 use app\common\model\cms\Content;
 use app\common\model\cms\Config;
+use app\admin\validate\cms\ContactValid;
+use app\common\model\cms\Contact;
+use app\common\model\cms\Tags;
 
 class Index extends Controller
 {
@@ -44,7 +47,11 @@ class Index extends Controller
         }
         $num=$this->request->param('num',10);
         $where['query']['id'] = $id;
+        Tags::where('id',$id)->setInc('hits');
         $data=Content::where('tag_id',$id)->order('id desc')->paginate($num,false,$where);
+        if(empty($data)){
+            return $this->error('页面不存在',url('index'));
+        }
         $current=Category::get(['tag_id'=>$id]);
          
         if($current){
@@ -62,8 +69,12 @@ class Index extends Controller
     function content($id=0){
         if($id==0){
             return $this->redirect('index');
-        }        
+        }       
+        Content::where('id',$id)->setInc('hits');
         $data=Content::get($id);
+        if(empty($data)){
+            return $this->error('页面不存在',url('index'));
+        }
         $this->assign('info',$data);
         
         //上一篇 
@@ -90,6 +101,30 @@ class Index extends Controller
         return $this->fetch($this->template.'detail');
     }
     
+    function contact(){
+        
+        if($this->request->isPost()){
+            $data=$this->request->param();
+            $valid=new ContactValid();
+            if($valid->check($data)){
+                Contact::create($data);
+                return json(['code'=>1,'msg'=>'信息已经提交,感谢您的支持']);
+            }else{
+                return json(['code'=>0,'msg'=>$valid->getError()]);
+            }
+            
+        }
+        
+        $this->assign('current',-1); 
+        return $this->fetch($this->template.'contact');
+        
+        
+    }
+    
+    function map(){
+       return $this->fetch($this->template.'map');
+    }
+    
     
     //获取导航数组
    protected  function getMenus(){
@@ -97,11 +132,12 @@ class Index extends Controller
         $tree=new Tree();
         $tree->init($arr);
         $data=$tree->getTreeArray(0);
-        $ret[0]=['title'=>'首页','id'=>0,'childlist'=>[]];
+        $ret[0]=['title'=>'首页','id'=>0,'childlist'=>[],'url'=>'index'];
         foreach($data as $v){           
             $ret[]=$v->toArray();
         }
         
+        $ret[]=['title'=>'联系我们','id'=>-1,'childlist'=>[],'url'=>'contact'];
         $this->setMenuUrl($ret);
         return $ret;
         
@@ -120,7 +156,7 @@ class Index extends Controller
                 $v['url']=$url;
                 
             }else{
-                $v['url']=url('index');
+                $v['url']=url($v['url']);
             }
             if($v['childlist']){
                 $this->setMenuUrl($v['childlist']);

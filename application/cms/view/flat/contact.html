@@ -1,0 +1,80 @@
+<div class="page-title sp" style="background-image: url(assets/img/page-title.jpg)">
+    <div class="container text-center">
+        <h2>Contact Us</h2>
+        <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+    </div>
+</div>
+      
+<div class="contact-area sp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 contact-info">
+                <div class="single-info">
+                    <h5>Phone</h5>
+                    <p>{$config.tel}</p>
+                </div>
+                <div class="single-info">
+                    <h5>Email</h5>
+                    <p>{$config.email}</p>
+                </div>
+                <div class="single-info">
+                    <h5>Address</h5>
+                    <p>{$config.address}</p>
+                </div>
+                <div class="single-info">
+                    <h5>Social</h5>
+                    <p>
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                        <a href="#" class="fa fa-pinterest"></a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <form  class="contact-form" >
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="text" name="user_name" placeholder="Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="email"  name="email"  placeholder="Email">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="subject"  placeholder="Subject">
+                        </div>
+                        <div class="col-lg-12">
+                            <textarea placeholder="Message" name="message"></textarea>
+                        </div>
+                        <div class="col-lg-12">
+                            <button class="button" id="submit">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      
+    </div>
+</div> 
+
+<div class="baidu-map">
+    {:widget('cms/flat/map')}
+</div>
+<script  src="https://code.jquery.com/jquery-1.12.4.min.js"  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="  crossorigin="anonymous"></script>
+<script>
+	$('#submit').click(function(e){
+		e.preventDefault();
+		var data=$('form').serialize();
+		$.post("{:url()}",data,function(msg){
+			if(msg.code==1){				
+				$('input[name="user_name"]').val('');
+				$('input[name="email"]').val('');
+				$('input[name="subject"]').val('');
+				$('textarea[name="message"]').val('');
+			} 
+			alert(msg.msg);			 
+			
+		},'json');
+	});
+
+</script>
