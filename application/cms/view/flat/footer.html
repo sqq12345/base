@@ -1,0 +1,74 @@
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 footer_widget">
+                    <div class="inner">
+                        <h4>简介</h4>
+                        <p>{$config.des}</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 footer_widget">
+                    <div class="inner">
+                        <h4>微信公众号</h4>
+                        <p><img src="/uploads/{$config.qrcode}" height="200px"/></p>
+                        
+                    </div>
+                </div>
+           
+                <div class="col-md-6 col-lg-4 footer_widget">
+                    <div class="inner">
+                        <h4>地址</h4>                         
+                        <p>{$config.address}</p>
+                        <h4>订阅我们</h4>
+                        <form action="#" class="nw_form">
+                            <input placeholder="Enter your email" type="email">
+                            <button><i class="fa fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright-txt">
+                        {$config.copyright}
+                    </div>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <div class="footer-nav">
+                    {foreach name="menus" item="item"}
+                    	 
+                    	 <a href="{$item.url}">{$item.title}</a>
+                    {/foreach}
+                       
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+       
+       
+        
+    </div>
+
+    <!--Required JS files-->
+<script src="assets/js/jquery-2.2.4.min.js"></script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/vendor/owl.carousel.min.js"></script>
+<script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+<script src="assets/js/vendor/jquery.barfiller.js"></script>
+<script src="assets/js/vendor/loopcounter.js"></script>
+<script src="assets/js/vendor/slicknav.min.js"></script>
+<script src="assets/js/active.js"></script>
+
+</body>
+
+</html>

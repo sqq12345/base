@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{$config.title}</title>
+	<base href="/cms/flat/" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/barfiller.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="preloader">
+        <span class="preloader-spin"></span>
+    </div>
+    <div class="site">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-sm-3 logo-column">
+                        <a href="index.html" class="logo">
+                            <img src="/uploads/{$config.logo}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-9 nav-column clearfix">
+                        <div class="right-nav">
+                            <span class="search-icon fa fa-search"></span>
+                            <form action="#" class="search-form">
+                                <input type="search" placeholder="search now">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            <!-- 
+                            <div class="header-social">
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-github"></a>
+                            </div> -->
+                        </div>
+                        <nav id="menu" class="d-none d-lg-block">
+                            <ul>
+                            
+                            	{foreach name="menus" item="item" key="key"}
+                            		{if($item['childlist'])}
+                            		<li class="{if($item['id']==$current)}current-menu-item{/if} has-child">
+	                                    <a href="{$item.url}">{$item.title}</a>
+	                                    <ul class="sub-menu">
+	                                    	{foreach name="item.childlist" item="menu"}
+	                                    		<li><a href="{$menu.url}">{$menu.title}</a></li>
+	                                    	{/foreach}
+	                                    </ul>
+	                                </li>	                                
+	                                {else /}
+	                                 <li class="{if($item['id']==$current)}current-menu-item{/if}"><a href="{$item.url}">{$item.title}</a></li>	                                
+                            	 	{/if}
+                            	{/foreach}
+                       
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header> 

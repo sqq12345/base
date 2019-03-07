@@ -1,0 +1,37 @@
+ <div class="faq-area-1 sp">
+    <div class="container">
+        <div class="row">           
+        	<div class="col-md-12">
+	            <div class="single-faq">
+	                <h1 style="text-align:center">
+						{$info.title}
+					</h1>
+					<span>作者：{$info.author}</span><span style="float:right">{$info['create_time']}</span>
+					<hr>
+	                {:html_entity_decode($info->content)}
+	            </div>
+            </div> 
+   	 	</div>
+   	 	<div class="row">
+   	 		<div class="col-md-6">
+   	 			<p>上一篇:
+   	 				{if($pre_data)}
+   	 				<a href="{$pre_data.url}" >{$pre_data.title}</a>
+   	 				{else /}
+   	 				无
+   	 				{/if}
+   	 			</p>
+   	 		</div>
+   	 		<div class="col-md-6">
+   	 			<p>下一篇:
+   	 				{if($next_data)}
+   	 				<a href="{$next_data.url}" >{$next_data.title}</a>
+   	 				{else /}
+   	 				无
+   	 				{/if}
+   	 			</p>
+   	 		</div>
+   	 	</div>
+	</div>
+</div>
+

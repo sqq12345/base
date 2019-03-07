@@ -1,0 +1,31 @@
+<style>
+.paginate{width:500px;margin:0 auto;}
+.paginate li{padding:3px 10px;border:1px solid #cad4de;margin:0 10px;border-radius:5px;}
+
+
+</style>
+ <div class="faq-area-2 sp">
+    <div class="container">
+        <div class="row">
+            
+        	{foreach name="data" item="item" key="key"}
+        	<div class="col-md-4">
+        	<img src="/uploads/{$item->image}" />
+        	</div>
+        	<div class="col-md-8">
+	            <div class="single-faq">
+	                <h2><span>{$key+1}</span><a href="{:url('content')}?id={$item->id}">{$item->title}</a></h2>
+	                <p>{:mb_substr(strip_tags(html_entity_decode($item->content)),0,200,'utf-8')}...</p>
+	            </div>
+            </div>  
+            
+            {/foreach}
+               
+              
+        </div>
+        
+        <div class="paginate">
+        	{$page}
+        </div>
+    </div>
+</div>

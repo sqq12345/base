@@ -1,0 +1,151 @@
+<!--{__NOLAYOUT__}-->
+{include file="template/layout_iframe" /}
+
+<link rel="stylesheet" href="__PLUGINS__/iconpicker/css/iconpicker.min.css">
+<script src="__PLUGINS__/iconpicker/js/iconpicker.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            {include file="template/form_header" /}
+            <form id="dataForm" class="dataForm form-horizontal" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">                        
+                    
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <input maxlength="50" id="title" name="title" value="{$info.title|default=''}" class="form-control" placeholder="请输入名称">
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">URL</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>                                    
+                                      <input     name="url" value="{$info.url|default=''}" class="form-control" placeholder="请输入链接地址">
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>                                    
+                                      <input maxlength="50"   name="show_title" value="{$info.show_title|default=''}" class="form-control" placeholder="请输入标题">
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">副标题</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <textarea  cols="15"  name="description" class="form-control" style="resize:none">{$info.description|default=''}</textarea>
+                                     
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">显示栏目</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <select name="category_id"  class="form-control"> 
+                                    	<option value="0">首页</option>                                        
+                                        {$selects}
+                                    </select>
+                                </div>
+                            </div>
+                        </div> 
+                         <div class="form-group">
+                            <label for="status" class="col-sm-2 control-label">是否启用</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group iconpicker-container">
+                                    <input {if (isset($info) && $info.status==1) || !isset($info)}checked{/if}
+                                    value="{$info.status|default='1'}"
+                                    class="form-input-switch" type="checkbox" placeholder="status-switch" data-input="status">
+                                    <input id="status" name="status" value="{$info.status|default='1'}" type="hidden"/>
+                                </div>
+                            </div>
+                        </div>                    
+                        <div class="form-group">
+                            <label for="icon" class="col-sm-2 control-label">图片</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group iconpicker-container">                                    
+                                    <input  name="image"  type="file" class="form-control" >
+                                </div>
+                                <br>
+                               <div id="image_show">
+                               		{if(isset($info['image']))}
+                               			<img src="/uploads/{$info.image}" width="400px" />
+                               		{/if}
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                {include file="template/form_footer" /}
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+     var tags={:json_encode($tags)};
+	 var current_tag_id="{$info.tag_id|default=0}";
+	 var current_content_id="{$info.content_id|default=''}";
+		function _checkType(){
+			var $val=$("select[name='type']").val();   	 
+		   	 $str="";
+		   	 if($val==0){
+		   		 $str='<select name="tag_id" class="form-control">';
+		            for(let key in tags){
+		            	if(key==current_tag_id){
+		            		 $str+='<option value="'+key+'" selected>'+tags[key]+'</option>';
+		            	}else{
+		            		 $str+='<option value="'+key+'">'+tags[key]+'</option>';
+		            	}
+		            }
+		    		$str+='</select>';
+		    		$('#type_content').html($str);
+		    		$('#type_title').html('绑定标签');
+		   	 
+		   	 }else if($val==1){
+		   		 $str='<input name="content_id" class="form-control" value="'+current_content_id+'" placeholder="请输入文章的ID" />';
+		   		 $('#type_content').html($str);
+		     		 $('#type_title').html('绑定文章');
+		   	 }
+		}
+		
+     $("select[name='type']").change(function(){
+    	_checkType();    	 
+     });
+     
+     
+     $("input[type='file']").change(function(){
+    	 var file=this.files[0];
+		 if(window.FileReader){
+			  var fr=new FileReader();
+			  fr.readAsDataURL(file);
+			  fr.onloadend=function(e){
+				  var len=e.target.result.length/1365;
+				  if(len>400){
+					  layer.msg('图片超过400KB，不能上传此图片');
+				  }
+				  var str='<img src="'+e.target.result+'" width="200px" />';
+				  $('#image_show').html(str);
+				   
+			  }
+		 }
+    	 
+     });
+     
+     _checkType();
+     
+</script>

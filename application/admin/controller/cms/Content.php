@@ -96,7 +96,7 @@ class Content extends Base
                 $row->save($param);
                 return $this->layerSuccess();
             }
-            return $this->error();
+            return $this->error($valid->getError());
         }
         
         $tags=Tags::order('id','asc')->column('id,title');        

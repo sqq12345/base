@@ -12,7 +12,7 @@ class Category extends BaseModel
     }
     
     function content(){
-        return $this->hasOne('Content','id','tag_id');
+        return $this->hasOne('Content','id','content_id');
     }
     
     function getTypeTextAttr(){

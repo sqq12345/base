@@ -8,19 +8,9 @@ class Banners extends BaseModel
 {
     protected $name='cms_banners';
     
-    function tag(){
-        return $this->hasOne('Tags','id','tag_id');
+    function category(){
+        return $this->hasOne('Category','id','category_id');
     }
     
-    function content(){
-        return $this->hasOne('Content','id','tag_id');
-    }
-    
-    function getTypeTextAttr(){
-        if($this->getAttr('type')==0){
-            return '列表';
-        }else{
-            return '文章';
-        }
-    }
+   
 }
