@@ -26,7 +26,7 @@ class Content extends Base
         if($keyword){
             $this->model->whereLike('title',"%{$keyword}%");
         }
-        $list=$this->model->order('id desc')->paginate(10);
+        $list=$this->model->order('id desc')->paginate($this->webData['list_rows']);
        
         foreach($list as &$item){
             $item['tag']=$item->tag;

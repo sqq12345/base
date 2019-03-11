@@ -53,7 +53,8 @@
                         <th>标签</th>
                         <th>点击数</th>
                         <th>添加时间</th>
-                        <th>修改时间</th>     
+                        <th>修改时间</th> 
+                        <th>置顶推荐</th> 
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -72,7 +73,8 @@
                         <td>{$list.tag.title}</td>
                         <td>{$list.hits}</td>                    
                         <td>{$list.create_time}</td>
-                        <td>{$list.update_time}</td>                   
+                        <td>{$list.update_time}</td>  
+                        <td>{$list.top?'是':'否'}</td>                     
                         <td class="td-do">
                				
 							<a title="修改" 
