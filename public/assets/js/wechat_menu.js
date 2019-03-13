@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function ($, undefined, Backend, Table, Form, Sortable) {
+define(['sortable'], function (Sortable) {
     var Controller = {
         index: function () {
         	 
@@ -173,12 +173,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function
                 $.post(syncUrl, {}, function (ret) {
                     var msg = ret.hasOwnProperty("msg") && ret.msg != "" ? ret.msg : "";
                     if (ret.code == 1) {
-                        Backend.api.toastr.success('菜单同步更新成功，生效时间看微信官网说明，或者你重新关注微信号！');
+                        layer.msg('菜单同步更新成功，生效时间看微信官网说明，或者你重新关注微信号！');
                     } else {
-                        Backend.api.toastr.error(msg ? msg : __('Operation failed'));
+                       layer.msg('Operation failed');
                     }
                 }, 'json');
             });
+            /*
             //刷新资源
             var refreshkey = function (data) {
                 responselist[data.eventkey] = data.title;
@@ -201,7 +202,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'sortable'], function
                 });
                 return false;
             });
-
+			*/
             $("#menu-list li.menu-item:first").trigger("click");
         },
         add: function () {

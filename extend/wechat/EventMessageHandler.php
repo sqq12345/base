@@ -4,7 +4,7 @@ use app\common\model\WechatAutoreply;
 use app\common\model\WechatResponse;
 
 /**
- * 处理文本消息
+ * 处理菜单消息
  * @author fzf
  *
  */
