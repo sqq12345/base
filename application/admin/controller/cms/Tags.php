@@ -1,12 +1,12 @@
 <?php
 
 namespace app\admin\controller\cms;
-
-
+use tools\Tree;
 use think\Request;
 use app\common\model\cms\Tags as TagsModel;
 use app\admin\controller\Base;
 use app\admin\validate\cms\TagValid;
+use app\common\model\cms\Content;
 
 class Tags extends Base
 {
@@ -15,24 +15,66 @@ class Tags extends Base
      *
      * @return \think\Response
      */
-    public function index()
-    {
-        $model=new TagsModel();
+
+   public function index(){
+       $model = new TagsModel();
+
         $keyword=$this->request->param('keywords');
         if($keyword){
             $model->whereLike('title',"%{$keyword}%");
         }
-        $list=$model->order('id desc')->paginate(10);
-        foreach ($list as $item){
-            $item->num=$item->list()->count();
-        }
-        
-        $this->assign(['lists'=>$list,'page'=>$list->render(),'keywords'=>$keyword]);
-        
-        
-        return $this->fetch();
-    }
+       $result      = $model
+           ->order('id asc')
+           ->column('*', 'id');
 
+       $tree       = new Tree();
+       $tree->nbsp = '&nbsp;&nbsp;&nbsp;';
+       $content_model = new Content();
+       foreach ($result as $n => $r) {
+           $result[$n]['create_time'] =date("Y-m-d H:i:s", $result[$n]['create_time']);
+           $result[$n]['update_time'] =date("Y-m-d H:i:s", $result[$n]['update_time']);
+           $result[$n]['num']  =$content_model->tag_num($r['id']);
+           $result[$n]['level']          = $tree->get_level($r['id'], $result);
+           $result[$n]['parent_id_node'] = ($r['parent_id']) ? ' class="child-of-node-' . $r['parent_id'] . '"' : '';
+
+           // $result[$n]['str_manage'] =
+           //     '<a href="' . url('admin_menu/edit', 'id=' . $r['id']) .
+           //     '" class="btn btn-primary btn-xs"  data-confirm="2"
+           //     data-type="2"  title="修改" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+           //     ';
+
+           $result[$n]['str_manage'] =
+               '<a data-id="' . $r['id'].
+               '" class="AjaxButton btn btn-primary btn-xs" data-url="edit"   data-confirm="2"  
+                data-type="2" data-title="修改" title="修改" data-toggle="tooltip"><i class="fa fa-pencil"></i></a>
+                ';
+
+           $result[$n]['str_manage'] .=
+               '<a class="btn btn-danger btn-xs AjaxButton" data-id="'. $r['id'].'" data-url="del.html" data-toggle="tooltip" title="删除"><i class="fa fa-trash"></i></a>';
+
+       }
+
+       $str = "<tr id='node-\$id' data-level='\$level' \$parent_id_node>
+                    <td><input type='checkbox' onclick='check_this(this)'
+                     name='data-checkbox' data-id='\$id\' 
+                    class='checkbox data-list-check' value='\$id' placeholder='选择/取消'>
+                    </td>
+                    <td>\$id</td>
+                    <td>\$spacer  \$title</td>
+                    <td>\$num</td>
+                    <td>\$hits</td>
+                    <td>\$create_time</td>
+                     <td>\$update_time</td>
+                    <td class='td-do'>\$str_manage</td>
+                </tr>";
+
+       $tree->init($result);
+       $menu_list = $tree->get_tree(0, $str);
+       $this->assign([
+           'menu_list' => $menu_list
+       ]);
+       return $this->fetch();
+   }
    
     public function add()
     {
@@ -47,6 +89,12 @@ class Tags extends Base
             return $this->error($valid->getError());
              
         }
+        $parent_id = isset($this->param['parent_id']) ? $this->param['parent_id'] : 0;
+        $selects   = $this->tags($parent_id);
+        $this->assign([
+            'selects'  => $selects
+        ]);
+
         return $this->fetch();
         
     }
@@ -71,7 +119,11 @@ class Tags extends Base
             return $this->error($valid->getError());
             
         }
-        $this->assign('row',$row);
+        $selects  = $this->tags($row->parent_id);
+        $this->assign([
+            'selects'  => $selects,
+            'row'     => $row
+        ]);
         return $this->fetch('add');
     }
     
@@ -101,5 +153,21 @@ class Tags extends Base
         
         return $this->success();
         
+    }
+
+    function tags($selected = 1, $current_id = 0)
+    {
+        $array       = [];
+        $tree        = new Tree();
+        $admin_menus = new TagsModel();
+        $result      = $admin_menus->whereNotIn('id', $current_id)->order([ 'id' => 'asc'])->column('*', 'id');
+        foreach ($result as $r) {
+            $r['selected'] = $r['id'] == $selected ? 'selected' : '';
+            $array[]       = $r;
+        }
+
+        $str = "<option value='\$id' \$selected >\$spacer \$title</option>";
+        $tree->init($result);
+        return $tree->get_tree(0, $str, $selected);
     }
 }

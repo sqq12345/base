@@ -11,4 +11,8 @@ class Content extends BaseModel
     function tag(){
         return $this->hasOne('Tags','id','tag_id');
     }
+
+    public function tag_num($tag_id){
+         return $this->where("tag_id",$tag_id)->count();
+    }
 }
