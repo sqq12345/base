@@ -59,11 +59,13 @@ class Content extends Base
                 $this->model->save($param);
                 return $this->layerSuccess();
             }
+
             return $this->error($valid->getError());
         }
-        
-        $tags=Tags::order('id','asc')->column('id,title');
-        
+
+        $parent_id = isset($this->param['parent_id']) ? $this->param['parent_id'] : 0;
+        $tags   = (new Tags)->tags($parent_id);
+
         $this->assign('tags',$tags);
         return $this->fetch();
         
@@ -98,8 +100,8 @@ class Content extends Base
             }
             return $this->error($valid->getError());
         }
-        
-        $tags=Tags::order('id','asc')->column('id,title');        
+
+        $tags  = (new Tags)->tags($row->tag_id);
         $this->assign(['tags'=>$tags,'row'=>$row]);
         return $this->fetch('add');
         

@@ -26,10 +26,8 @@
 				    	<div class="input-group">
                            <span class="input-group-addon"><i class="fa fa-tags"></i></span>
                            <select name="tag_id" id="tag_id" class="form-control" >
-                           		{foreach name="tags" item="item" key="key"}
-                           			<option value="{$key}" {if(isset($row['tag_id']) && $row['tag_id'] == $key ) } selected {/if}>{$item}</option>                           		
-                           		{/foreach}
-                           
+                             
+                           		 {$tags}
                            </select>
                        </div>
 				    </div>

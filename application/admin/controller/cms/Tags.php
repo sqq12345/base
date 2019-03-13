@@ -90,7 +90,7 @@ class Tags extends Base
              
         }
         $parent_id = isset($this->param['parent_id']) ? $this->param['parent_id'] : 0;
-        $selects   = $this->tags($parent_id);
+        $selects   = (new TagsModel)->tags($parent_id);
         $this->assign([
             'selects'  => $selects
         ]);
@@ -119,7 +119,7 @@ class Tags extends Base
             return $this->error($valid->getError());
             
         }
-        $selects  = $this->tags($row->parent_id);
+        $selects  = (new TagsModel)->tags($row->parent_id);
         $this->assign([
             'selects'  => $selects,
             'row'     => $row
@@ -155,19 +155,5 @@ class Tags extends Base
         
     }
 
-    function tags($selected = 1, $current_id = 0)
-    {
-        $array       = [];
-        $tree        = new Tree();
-        $admin_menus = new TagsModel();
-        $result      = $admin_menus->whereNotIn('id', $current_id)->order([ 'id' => 'asc'])->column('*', 'id');
-        foreach ($result as $r) {
-            $r['selected'] = $r['id'] == $selected ? 'selected' : '';
-            $array[]       = $r;
-        }
 
-        $str = "<option value='\$id' \$selected >\$spacer \$title</option>";
-        $tree->init($result);
-        return $tree->get_tree(0, $str, $selected);
-    }
 }
