@@ -26,7 +26,7 @@ class Content extends Base
         if($keyword){
             $this->model->whereLike('title',"%{$keyword}%");
         }
-        $list=$this->model->order('id desc')->paginate($this->webData['list_rows']);
+        $list=$this->model->order('id desc')->paginate($this->webData['list_rows'],false,array("query"=>input()));
        
         foreach($list as &$item){
             $item['tag']=$item->tag;
@@ -55,7 +55,7 @@ class Content extends Base
                    }
                     
                 }
-                
+                $param["label"] = isset($param["label"])&&!empty($param["label"])?implode(",", $param["label"]):"";
                 $this->model->save($param);
                 return $this->layerSuccess();
             }
@@ -94,13 +94,14 @@ class Content extends Base
                         return $this->error($param['file']->getError());
                     }
                     
-                }                
+                }
+                $param["label"] = isset($param["label"])&&!empty($param["label"])?implode(",", $param["label"]):"";
                 $row->save($param);
                 return $this->layerSuccess();
             }
             return $this->error($valid->getError());
         }
-
+        $row["label"] = !empty($row["label"])?explode(",", $row["label"]):array();
         $tags  = (new Tags)->tags($row->tag_id);
         $this->assign(['tags'=>$tags,'row'=>$row]);
         return $this->fetch('add');

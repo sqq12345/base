@@ -31,4 +31,35 @@ $("input[type='file']").change(function(){
 	 }
 	 
 });
+$("input[name='label_value']").bind('keypress',function(e){
+    if(e.keyCode == "13"){
+         var value = $(this).val();
+         var str="";
+         var label_num = $("input.label").length;
+         if(label_num>8){
+             layer.msg("标签个数不能超过8个");
+             event.preventDefault ? event.preventDefault() : event.returnValue = false;
+             return false;
+         }
+         if(value.length!=0){
+             if(value.length>10){
+                 layer.msg("每个标签文字内容不能超过10个字符");
+                 event.preventDefault ? event.preventDefault() : event.returnValue = false;
+                 return false;
+             }
+             str+=" <span class=\"input-group-addon bg-gray\">\n" +
+                 "                                <lebel>"+value+"</lebel>\n" +
+                 "                               <input type=\"hidden\" name=\"label[]\" class='label' value=\""+value+"\">\n" +
+                 "                                <i class=\"fa fa-times\"></i>\n" +
+                 "                           </span>";
+         }
+         $(this).val('');
+         $(this).before(str);
+         event.preventDefault ? event.preventDefault() : event.returnValue = false;
+    }
+
+})
+$(document).on("click",".fa-times",function(){
+   $(this).parent("span").remove();
+})
 </script>
