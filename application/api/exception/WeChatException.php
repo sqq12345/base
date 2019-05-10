@@ -4,9 +4,9 @@ namespace app\api\exception;
 
 class WeChatException extends BaseException
 {
-    public $code = 400;
+    public $code = 521;
     public $msg = 'wechat  error';
-    public $errorCode = 999;
+    public $errorCode = 10000;
 }
 
 

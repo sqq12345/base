@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller;
+namespace app\common\controller;
 use think\Controller;
 
 use app\api\validate\AccessToken;
@@ -10,18 +10,20 @@ use think\Request;
 use think\Response;
 
 
-class BaseController extends Controller
+class Api extends Controller
 {
 
     protected $param;// 请求参数
     protected $responseType = 'json'; //返回类型
-    protected $uid;// 用户登陆 0  没有登录，
+    protected $uid = 0;// 用户登陆 0  没有登录，
+    protected $needAccessToken = true;
 
     /**
      * 基类初始化
      */
     public function _initialize()
     {
+        \think\Hook::listen('app_init');
         defined('IS_POST')          or define('IS_POST',         $this->request->isPost());
         defined('IS_GET')           or define('IS_GET',          $this->request->isGet());
         defined('IS_AJAX')          or define('IS_AJAX',         $this->request->isAjax());
@@ -32,7 +34,6 @@ class BaseController extends Controller
         defined('URL_MODULE')       or define('URL_MODULE',      strtolower($this->request->module()) . '/' . URL);
         //移除HTML标签
         $this->request->filter('strip_tags');
-
         $this->param = $this->request->param();
         $this->uid = Token::safe_uid();
 
@@ -44,7 +45,8 @@ class BaseController extends Controller
     public function __construct()
     {
         parent::__construct();
-        (new AccessToken()) -> goCheck();  // 校验accessToken
+        // 校验accessToken
+        $this->needAccessToken && (new AccessToken()) -> goCheck();
     }
 
     /**
@@ -58,6 +60,11 @@ class BaseController extends Controller
     protected function success($msg = '', $data = null, $code = 1, $type = null, array $header = [])
     {
         $this->result($msg, $data, $code, $type, $header);
+    }
+
+    public function _empty()
+    {
+        return $this->error('Api not fount');
     }
 
     /**

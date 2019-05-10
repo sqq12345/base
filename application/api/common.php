@@ -331,7 +331,6 @@ function getIP() {
     return $output;
 }
 
-
 //发送短信
 function send_msg($mobile,$msg)
 {
@@ -360,7 +359,6 @@ function send_msg($mobile,$msg)
     }
 }
 
-
 function myTrim($str)
 {
     $search = array(" ","　","\n","\r","\t");
@@ -368,3 +366,16 @@ function myTrim($str)
     return str_replace($search, $replace, $str);
 }
 
+/**
+ * 生成accesstoken
+ * @param $app_key string  app_key
+ * @param $app_id int app_id
+ * @return string
+ */
+function generate_access_token()
+{
+    $time = time();
+    $sign = md5(date("Ymd").'_'.config('API_KEY'));
+    $token = base64_encode("{$time}_{$sign}");
+    return $token;
+}
